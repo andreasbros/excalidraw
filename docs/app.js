@@ -1,7 +1,21 @@
 let ICONS = [];
 let activeCat = "all";
 let query = "";
+let fuse = null;
 const libCache = {};           // src -> [{name, elements}]
+
+// Provider / domain synonyms so "google cloud run" finds the GCP "Cloud Run" icon,
+// "amazon s3" finds AWS, etc. Folded into each icon's searchable text.
+const SYN = {
+  gcp: "google gcp google-cloud gce gke",
+  aws: "amazon aws",
+  azure: "microsoft azure ms",
+  oracle: "oracle oci oracle-cloud",
+  "cloud-k8s-devops": "cloud kubernetes k8s devops",
+  network: "network networking infrastructure",
+  architecture: "architecture system-design software",
+  logos: "logo brand",
+};
 
 const grid = document.getElementById("grid");
 const countEl = document.getElementById("count");
@@ -11,10 +25,21 @@ init();
 
 async function init() {
   ICONS = await (await fetch("icons.json")).json();
+  for (const i of ICONS) {
+    i.search = [i.name, i.name, SYN[i.cat] || "", i.lib.replace(/[-_]/g, " "), i.catLabel]
+      .join(" ").toLowerCase();
+  }
+  fuse = new Fuse(ICONS, {
+    keys: ["search"],
+    threshold: 0.34,        // fuzzy tolerance
+    ignoreLocation: true,   // match anywhere in the text
+    minMatchCharLength: 2,
+    useExtendedSearch: true, // space-separated terms are AND-ed
+  });
   buildCats();
   render();
   document.getElementById("q").addEventListener("input", (e) => {
-    query = e.target.value.trim().toLowerCase();
+    query = e.target.value.trim();
     render();
   });
 }
@@ -40,18 +65,21 @@ function buildCats() {
   });
 }
 
-function match(icon) {
-  if (activeCat !== "all" && icon.cat !== activeCat) return false;
-  if (!query) return true;
-  return (
-    icon.name.toLowerCase().includes(query) ||
-    icon.lib.toLowerCase().includes(query) ||
-    icon.catLabel.toLowerCase().includes(query)
-  );
+function currentList() {
+  let list;
+  if (!query) {
+    list = ICONS;
+  } else {
+    // extended-search: AND each whitespace term, fuzzy per term
+    const pattern = query.split(/\s+/).filter(Boolean).join(" ");
+    list = fuse.search(pattern).map((r) => r.item);
+  }
+  if (activeCat !== "all") list = list.filter((i) => i.cat === activeCat);
+  return list;
 }
 
 function render() {
-  const list = ICONS.filter(match);
+  const list = currentList();
   countEl.textContent = `${list.length} icon${list.length === 1 ? "" : "s"}`;
   grid.innerHTML = "";
   if (!list.length) {
