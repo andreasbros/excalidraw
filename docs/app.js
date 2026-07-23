@@ -244,10 +244,19 @@ async function copyIcon(icon, card) {
     await navigator.clipboard.writeText(payload);
     card.classList.add("copied");
     setTimeout(() => card.classList.remove("copied"), 700);
-    toast("Copied ✓  Paste into Excalidraw (Ctrl/Cmd+V)");
+    showCopied();
   } catch (e) {
     toast("Copy failed - your browser blocked clipboard access");
   }
+}
+
+function showCopied() {
+  toastEl.innerHTML =
+    '<span class="t-big">Copied \u2713</span>' +
+    '<span class="t-sub">Paste into Excalidraw <kbd>\u2318</kbd>/<kbd>Ctrl</kbd> + <kbd>V</kbd></span>';
+  toastEl.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toastEl.classList.remove("show"), 1900);
 }
 
 let toastTimer;

@@ -69,11 +69,18 @@ kbd{background:var(--card);border:1px solid var(--border);border-radius:5px;padd
 .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:64px 20px;font-size:15px}
 
 /* Toast */
-.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(14px);
-  background:var(--fg);color:var(--bg);padding:11px 18px;border-radius:12px;font-size:14px;font-weight:500;
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(14px);
+  background:#1f1f27;color:#fff;padding:14px 24px;border-radius:16px;
+  display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center;
   opacity:0;pointer-events:none;transition:opacity .22s, transform .22s;
-  box-shadow:0 10px 34px rgba(0,0,0,.3);z-index:50}
+  box-shadow:0 12px 38px rgba(0,0,0,.34);z-index:50}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.t-big{font-size:30px;font-weight:700;line-height:1;letter-spacing:.2px}
+.t-sub{font-size:10.5px;line-height:1.2;color:rgba(255,255,255,.82);
+  display:flex;align-items:center;gap:5px;flex-wrap:wrap;justify-content:center}
+.toast kbd{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);
+  border-bottom-width:2px;border-radius:5px;padding:1px 6px;color:#fff;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;line-height:1.4}
 
 /* Mobile: just search + a toggle; categories collapse behind it */
 @media (max-width:640px){
