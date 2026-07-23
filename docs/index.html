@@ -15,10 +15,15 @@
   <div class="bar">
     <h1>Excalidraw Icons</h1>
     <input id="q" type="search" placeholder="Search 1075 icons - e.g. cloud run, kubernetes, database, load balancer…" autocomplete="off" autofocus>
+    <button id="filterToggle" class="filter-toggle" aria-label="Show filters" aria-expanded="false" title="Filters">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
     <span id="count" class="count"></span>
   </div>
-  <div id="cats" class="cats"></div>
-  <p class="hint">Click an icon → it's copied to your clipboard → switch to Excalidraw and press <kbd>Ctrl</kbd>+<kbd>V</kbd>. Many GCP/network icons have no name - filter by category and browse visually.</p>
+  <div id="filters" class="filters">
+    <div id="cats" class="cats"></div>
+    <p class="hint">Click an icon → it's copied to your clipboard → switch to Excalidraw and press <kbd>Ctrl</kbd>+<kbd>V</kbd>. Many GCP/network icons have no name - filter by category and browse visually.</p>
+  </div>
 </header>
 <main id="grid" class="grid"></main>
 <div id="toast" class="toast"></div>

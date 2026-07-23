@@ -42,6 +42,14 @@ async function init() {
     query = e.target.value.trim();
     render();
   });
+  // Mobile: toggle the collapsible filters panel
+  const ft = document.getElementById("filterToggle");
+  const filters = document.getElementById("filters");
+  ft.addEventListener("click", () => {
+    const open = filters.classList.toggle("open");
+    ft.classList.toggle("open", open);
+    ft.setAttribute("aria-expanded", String(open));
+  });
 }
 
 function buildCats() {
@@ -60,6 +68,12 @@ function buildCats() {
       document.querySelectorAll(".chip").forEach((x) => x.classList.remove("active"));
       el.classList.add("active");
       render();
+      // collapse the panel on mobile after choosing (no effect on desktop)
+      const filters = document.getElementById("filters");
+      const ft = document.getElementById("filterToggle");
+      filters.classList.remove("open");
+      ft.classList.remove("open");
+      ft.setAttribute("aria-expanded", "false");
     };
     wrap.appendChild(el);
   });
