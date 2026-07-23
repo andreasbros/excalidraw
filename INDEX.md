@@ -69,13 +69,37 @@ Azure Data Box, Azure Data Box Gateway, Azure NetApp Files, Azure Stack Edge, Da
 
 Analysis Services, Azure Cache for Redis, Azure Cosmos DB, Azure Data Explorer, Azure Data Factory, Azure Database for MariaDB, Azure Database for MySQL, Azure Database for Postgres, Azure Databricks, Azure Event Hubs, Azure Machine Learning, Azure Policy, Azure SQL Database, Azure SQLMI, Azure Synapse Analytics, Cognitive Services, Cost Management and billig, Power BI, SQL Server on Azure VM
 
+### `brands/anthropic.excalidrawlib`  (1 named / 1 total)
+
+Anthropic
+
+### `brands/chatgpt.excalidrawlib`  (1 named / 1 total)
+
+ChatGPT
+
+### `brands/claude.excalidrawlib`  (1 named / 1 total)
+
+Claude
+
+### `brands/gemini.excalidrawlib`  (1 named / 1 total)
+
+Gemini
+
 ### `brands/hsbc.excalidrawlib`  (3 named / 3 total)
 
 HSBC hexagon, HSBC symbol (mono), HSBC wordmark
 
+### `brands/moodys.excalidrawlib`  (1 named / 1 total)
+
+Moody's
+
 ### `brands/nillion.excalidrawlib`  (1 named / 1 total)
 
 Nillion
+
+### `brands/openai.excalidrawlib`  (1 named / 1 total)
+
+OpenAI
 
 ### `brands/simzip.excalidrawlib`  (1 named / 1 total)
 

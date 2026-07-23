@@ -14,6 +14,13 @@ ROOT = os.path.dirname(HERE)
 OUT = os.path.join(ROOT, "brands")
 
 NAME_MAP = {
+    "moodys": "Moody's",
+    "moodys-analytics": "Moody's Analytics",
+    "anthropic": "Anthropic",
+    "claude": "Claude",
+    "gemini": "Gemini",
+    "openai": "OpenAI",
+    "chatgpt": "ChatGPT",
     "hsbc-symbol-mono": "HSBC symbol (mono)",
     "hsbc-hexagon": "HSBC hexagon",
     "hsbc-wordmark": "HSBC wordmark",
