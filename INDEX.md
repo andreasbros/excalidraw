@@ -85,6 +85,10 @@ Apple Pay
 
 AWS
 
+### `brands/bluesky.excalidrawlib`  (1 named / 1 total)
+
+Bluesky
+
 ### `brands/chatgpt.excalidrawlib`  (1 named / 1 total)
 
 ChatGPT
@@ -100,6 +104,18 @@ Cloudflare
 ### `brands/digitalocean.excalidrawlib`  (1 named / 1 total)
 
 DigitalOcean
+
+### `brands/discord.excalidrawlib`  (1 named / 1 total)
+
+Discord
+
+### `brands/ee.excalidrawlib`  (1 named / 1 total)
+
+EE
+
+### `brands/facebook.excalidrawlib`  (1 named / 1 total)
+
+Facebook
 
 ### `brands/gemini.excalidrawlib`  (1 named / 1 total)
 
@@ -117,13 +133,29 @@ Hetzner
 
 HSBC hexagon, HSBC symbol (mono), HSBC wordmark
 
+### `brands/instagram.excalidrawlib`  (1 named / 1 total)
+
+Instagram
+
 ### `brands/jenkins.excalidrawlib`  (1 named / 1 total)
 
 Jenkins
 
+### `brands/linkedin.excalidrawlib`  (1 named / 1 total)
+
+LinkedIn
+
 ### `brands/mastercard.excalidrawlib`  (1 named / 1 total)
 
 Mastercard
+
+### `brands/mastodon.excalidrawlib`  (1 named / 1 total)
+
+Mastodon
+
+### `brands/messenger.excalidrawlib`  (1 named / 1 total)
+
+Messenger
 
 ### `brands/moodys.excalidrawlib`  (1 named / 1 total)
 
@@ -132,6 +164,10 @@ Moody's
 ### `brands/nillion.excalidrawlib`  (1 named / 1 total)
 
 Nillion
+
+### `brands/o2.excalidrawlib`  (1 named / 1 total)
+
+O2
 
 ### `brands/openai.excalidrawlib`  (1 named / 1 total)
 
@@ -145,13 +181,29 @@ OVHcloud
 
 PayPal
 
+### `brands/pinterest.excalidrawlib`  (1 named / 1 total)
+
+Pinterest
+
+### `brands/reddit.excalidrawlib`  (1 named / 1 total)
+
+Reddit
+
 ### `brands/revolut.excalidrawlib`  (1 named / 1 total)
 
 Revolut
 
+### `brands/signal.excalidrawlib`  (1 named / 1 total)
+
+Signal
+
 ### `brands/simzip.excalidrawlib`  (1 named / 1 total)
 
 sim.zip
+
+### `brands/snapchat.excalidrawlib`  (1 named / 1 total)
+
+Snapchat
 
 ### `brands/stripe.excalidrawlib`  (1 named / 1 total)
 
@@ -161,13 +213,57 @@ Stripe
 
 TELE1
 
+### `brands/telegram.excalidrawlib`  (1 named / 1 total)
+
+Telegram
+
+### `brands/threads.excalidrawlib`  (1 named / 1 total)
+
+Threads
+
+### `brands/three.excalidrawlib`  (1 named / 1 total)
+
+Three
+
+### `brands/tiktok.excalidrawlib`  (1 named / 1 total)
+
+TikTok
+
+### `brands/tumblr.excalidrawlib`  (1 named / 1 total)
+
+Tumblr
+
 ### `brands/twilio.excalidrawlib`  (1 named / 1 total)
 
 Twilio
 
+### `brands/twitch.excalidrawlib`  (1 named / 1 total)
+
+Twitch
+
 ### `brands/visa.excalidrawlib`  (1 named / 1 total)
 
 Visa
+
+### `brands/vodafone.excalidrawlib`  (1 named / 1 total)
+
+Vodafone
+
+### `brands/wechat.excalidrawlib`  (1 named / 1 total)
+
+WeChat
+
+### `brands/whatsapp.excalidrawlib`  (1 named / 1 total)
+
+WhatsApp
+
+### `brands/x.excalidrawlib`  (1 named / 1 total)
+
+X
+
+### `brands/youtube.excalidrawlib`  (1 named / 1 total)
+
+YouTube
 
 ### `cloud-k8s-devops/cloud-design-patterns.excalidrawlib`  (24 components, all unnamed)
 

@@ -24,11 +24,21 @@ header{position:sticky;top:0;z-index:10;background:var(--bg);
 .bar{display:flex;align-items:center;gap:14px;max-width:1400px;margin:0 auto}
 .brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:15.5px;white-space:nowrap}
 .logo{width:26px;height:26px;border-radius:6px;display:block}
-#q{flex:1;min-width:200px;height:44px;padding:0 16px;font-size:16px;
-  border:1px solid var(--border);border-radius:12px;background:var(--card);color:var(--fg);
+.search{flex:1;min-width:0;display:flex;align-items:center;gap:8px;height:44px;
+  padding:0 10px 0 14px;border:1px solid var(--border);border-radius:12px;background:var(--card);
   transition:border-color .15s, box-shadow .15s}
+.search:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--ring)}
+#q{flex:1;min-width:60px;height:100%;border:none;outline:none;background:transparent;
+  color:var(--fg);font-size:16px;padding:0}
 #q::placeholder{color:var(--muted)}
-#q:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--ring)}
+.ac{display:inline-flex;align-items:center;gap:1px;max-width:260px;flex:0 1 auto;
+  background:var(--accent);color:#fff;border-radius:8px;padding:4px 3px 4px 10px;
+  font-size:12.5px;font-weight:500}
+.ac.hidden{display:none}
+.ac-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ac-x{border:none;background:transparent;color:#fff;cursor:pointer;font-size:17px;
+  line-height:1;padding:0 4px;opacity:.85}
+.ac-x:hover{opacity:1}
 .count{color:var(--muted);font-size:13px;white-space:nowrap;font-variant-numeric:tabular-nums}
 
 .filter-toggle{display:none;align-items:center;justify-content:center;
@@ -93,6 +103,7 @@ kbd{background:var(--card);border:1px solid var(--border);border-radius:5px;padd
   .filters.open{display:block}
   .grid{grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px;padding:14px}
   .thumb{height:64px}
+  .ac{max-width:42vw} /* keep room to type search text */
 }
 
 .notice{max-width:1400px;margin:0 auto;padding:22px 20px 40px;color:var(--muted);

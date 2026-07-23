@@ -50,6 +50,13 @@ async function init() {
   const qInput = document.getElementById("q");
   qInput.value = query;
   buildCats();
+  updateActiveCatChip();
+  document.querySelector("#activeCat .ac-x").addEventListener("click", () => {
+    activeCat = "all";
+    buildCats();
+    updateActiveCatChip();
+    renderFresh();
+  });
   if (saved && (saved.scrollY || saved.rendered)) restoreRender(saved);
   else renderFresh();
 
@@ -74,6 +81,18 @@ async function init() {
   });
 }
 
+function updateActiveCatChip() {
+  const el = document.getElementById("activeCat");
+  if (!el) return;
+  if (activeCat && activeCat !== "all") {
+    const lab = (ICONS.find((i) => i.cat === activeCat) || {}).catLabel || activeCat;
+    el.querySelector(".ac-label").textContent = lab;
+    el.classList.remove("hidden");
+  } else {
+    el.classList.add("hidden");
+  }
+}
+
 function buildCats() {
   const cats = ["all", ...new Set(ICONS.map((i) => i.cat))];
   const labels = { all: "All" };
@@ -89,6 +108,7 @@ function buildCats() {
       activeCat = c;
       document.querySelectorAll(".chip").forEach((x) => x.classList.remove("active"));
       el.classList.add("active");
+      updateActiveCatChip();
       renderFresh();
       // collapse the panel on mobile after choosing (no effect on desktop)
       const filters = document.getElementById("filters");
