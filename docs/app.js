@@ -18,6 +18,7 @@ const SYN = {
   diagrams: "diagram chart graph flow",
   ui: "ui wireframe mockup web app",
   misc: "misc fun",
+  brands: "brand logo company",
 };
 
 const grid = document.getElementById("grid");
@@ -161,12 +162,15 @@ const io = new IntersectionObserver(
 function makeCard(icon) {
   const card = document.createElement("div");
   card.className = "card";
-  const label = icon.name || icon.lib.replace(/[-_]/g, " ");
-  const libName = icon.libName || icon.lib;
+  const libName = icon.libName || icon.lib.replace(/[-_]/g, " ");
   card.title = icon.name ? `${icon.name}  ·  ${libName}` : libName;
+  // show icon name (primary) + library name (secondary, muted); if unnamed, show the library name
+  const meta = icon.name
+    ? `<div class="name">${escapeHtml(icon.name)}</div><div class="lib">${escapeHtml(libName)}</div>`
+    : `<div class="name">${escapeHtml(libName)}</div>`;
   card.innerHTML =
     `<div class="thumb"><img loading="lazy" src="thumbs/${icon.id}.svg" alt=""></div>` +
-    `<div class="name${icon.name ? "" : " unnamed"}">${escapeHtml(label)}</div>`;
+    `<div class="meta">${meta}</div>`;
   card.onclick = () => copyIcon(icon, card);
   return card;
 }
@@ -231,8 +235,12 @@ async function loadLib(src) {
 async function copyIcon(icon, card) {
   try {
     const lib = await loadLib(icon.src);
-    const elements = lib[icon.idx].elements;
-    const payload = JSON.stringify({ type: "excalidraw/clipboard", elements, files: {} });
+    const item = lib[icon.idx];
+    const payload = JSON.stringify({
+      type: "excalidraw/clipboard",
+      elements: item.elements,
+      files: item.files || {}, // image-based icons (brand logos) carry their file data
+    });
     await navigator.clipboard.writeText(payload);
     card.classList.add("copied");
     setTimeout(() => card.classList.remove("copied"), 700);

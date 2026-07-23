@@ -153,3 +153,8 @@ Each `.excalidrawlib` is authored by its original creator and distributed under 
 terms in the upstream repo (predominantly MIT). Source of truth:
 <https://github.com/excalidraw/excalidraw-libraries>. This repo is only a convenience
 mirror for use behind a restrictive proxy.
+
+The `brands/` category holds **logos of brands and companies** (embedded as Excalidraw
+image elements), included for identification/diagramming only. They are trademarks of
+their respective owners - see [`NOTICE.md`](NOTICE.md) for the disclaimer, sources and
+copyright.

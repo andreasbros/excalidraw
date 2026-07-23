@@ -41,10 +41,22 @@ CAT_LABEL = {
     "architecture": "Architecture", "network": "Network",
     "cloud-k8s-devops": "Cloud / K8s / DevOps", "logos": "Logos",
     "diagrams": "Diagrams / Charts", "ui": "UI / Wireframe", "misc": "Misc / Fun",
+    "brands": "Brands / Logos",
 }
 
 def catlabel(c):
     return CAT_LABEL.get(c, c.replace("-", " ").replace("_", " ").title())
+
+def item_thumb(els, libfiles):
+    """Image-based item -> wrap the embedded data URL in an SVG. Else vector render."""
+    for e in els:
+        if e.get("type") == "image" and e.get("fileId") in libfiles:
+            w, h = e.get("width", 100), e.get("height", 100)
+            url = libfiles[e["fileId"]]["dataURL"]
+            return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" '
+                    f'width="{w}" height="{h}"><image href="{url}" x="0" y="0" '
+                    f'width="{w}" height="{h}"/></svg>')
+    return render(els)
 
 def build():
     os.makedirs(os.path.join(DOCS, "thumbs"), exist_ok=True)
@@ -62,6 +74,7 @@ def build():
         libname = meta.get("libname", "")
         d = json.load(open(f))
         items = d.get("libraryItems", d.get("library", []))
+        libfiles = d.get("files", {})
         src = f"{cat}__{lib}"
         payload = []
         for i, it in enumerate(items):
@@ -69,12 +82,17 @@ def build():
             name = (it.get("name") or "").strip() if isinstance(it, dict) else ""
             iid = f"{src}__{i}"
             try:
-                open(os.path.join(DOCS, "thumbs", iid + ".svg"), "w").write(render(els))
+                open(os.path.join(DOCS, "thumbs", iid + ".svg"), "w").write(item_thumb(els, libfiles))
                 nthumb += 1
             except Exception as ex:
                 print("thumb fail", iid, ex)
                 continue
-            payload.append({"name": name, "elements": els})
+            ifiles = {e["fileId"]: libfiles[e["fileId"]] for e in els
+                      if e.get("fileId") in libfiles}
+            entry = {"name": name, "elements": els}
+            if ifiles:
+                entry["files"] = ifiles
+            payload.append(entry)
             icons.append({"id": iid, "name": name, "lib": lib, "libName": libname,
                           "author": author, "cat": cat, "catLabel": catlabel(cat),
                           "src": src, "idx": i})
