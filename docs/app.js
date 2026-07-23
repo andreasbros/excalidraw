@@ -29,15 +29,18 @@ init();
 async function init() {
   ICONS = await (await fetch("icons.json")).json();
   for (const i of ICONS) {
-    i.search = [i.name, i.name, SYN[i.cat] || "", i.lib.replace(/[-_]/g, " "), i.catLabel]
+    // searchable text: name (weighted x2), author, library name, filename,
+    // category (slug + label) and provider synonyms
+    i.search = [i.name, i.name, i.author || "", i.libName || "",
+                i.lib.replace(/[-_]/g, " "), i.cat, i.catLabel, SYN[i.cat] || ""]
       .join(" ").toLowerCase();
   }
   fuse = new Fuse(ICONS, {
     keys: ["search"],
-    threshold: 0.34,        // fuzzy tolerance
+    threshold: 0.4,         // recall; the ranker below handles precision
     ignoreLocation: true,   // match anywhere in the text
     minMatchCharLength: 2,
-    useExtendedSearch: true, // space-separated terms are AND-ed
+    includeScore: true,     // used to rank fuzzy matches below exact/phrase ones
   });
   if ("scrollRestoration" in history) history.scrollRestoration = "manual";
   const saved = loadState();
@@ -98,16 +101,51 @@ function buildCats() {
 }
 
 function currentList() {
-  let list;
-  if (!query) {
-    list = ICONS;
-  } else {
-    // extended-search: AND each whitespace term, fuzzy per term
-    const pattern = query.split(/\s+/).filter(Boolean).join(" ");
-    list = fuse.search(pattern).map((r) => r.item);
-  }
+  let list = query ? searchRanked(query) : ICONS;
   if (activeCat !== "all") list = list.filter((i) => i.cat === activeCat);
   return list;
+}
+
+// Fuzzy but graded: exact name > name prefix/phrase > all words in name >
+// all words anywhere (AND) > single word / fuzzy. Matches name, author,
+// library name, filename, category and synonyms.
+function searchRanked(raw) {
+  const q = raw.toLowerCase().trim();
+  const tokens = q.split(/\s+/).filter(Boolean);
+  const cand = new Map(); // id -> { i, fz: best per-token fuzzy score }
+  for (const t of tokens) {
+    for (const r of fuse.search(t)) {
+      const fz = r.score ?? 1;
+      const cur = cand.get(r.item.id);
+      if (!cur || fz < cur.fz) cand.set(r.item.id, { i: r.item, fz });
+    }
+  }
+  // substring safety net for the whole phrase (catches anything fuzzy missed)
+  for (const i of ICONS) {
+    if (!cand.has(i.id) && i.search.includes(q)) cand.set(i.id, { i, fz: 0.5 });
+  }
+  const scored = [];
+  for (const { i, fz } of cand.values()) {
+    const name = i.name.toLowerCase();
+    let s = (1 - fz) * 20;                 // fuzzy quality
+    if (name === q) s += 1000;             // exact name -> very top
+    else if (name.startsWith(q)) s += 600;
+    else if (name.includes(q)) s += 400;   // phrase in name
+    if ((i.libName || "").toLowerCase().includes(q)) s += 180; // query is the library's name
+    let nameHits = 0, anyHits = 0;
+    for (const t of tokens) {
+      const inName = name.includes(t);
+      if (inName) nameHits++;
+      if (inName || i.search.includes(t)) anyHits++;
+    }
+    // name words are worth much more than synonym/author/category words
+    s += nameHits * 120 + (anyHits - nameHits) * 15;
+    if (nameHits === tokens.length) s += 200;      // all words in the name
+    else if (anyHits === tokens.length) s += 80;   // all words matched somewhere (AND)
+    scored.push({ i, s });
+  }
+  scored.sort((a, b) => b.s - a.s);
+  return scored.map((x) => x.i);
 }
 
 // ---- Chunked / infinite-scroll rendering (keeps the DOM small for 1500+ icons) ----
