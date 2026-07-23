@@ -15,6 +15,9 @@ const SYN = {
   network: "network networking infrastructure",
   architecture: "architecture system-design software",
   logos: "logo brand",
+  diagrams: "diagram chart graph flow",
+  ui: "ui wireframe mockup web app",
+  misc: "misc fun",
 };
 
 const grid = document.getElementById("grid");
@@ -36,11 +39,26 @@ async function init() {
     minMatchCharLength: 2,
     useExtendedSearch: true, // space-separated terms are AND-ed
   });
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  const saved = loadState();
+  query = (saved && saved.query) || "";
+  activeCat = (saved && saved.cat) || "all";
+  const qInput = document.getElementById("q");
+  qInput.value = query;
   buildCats();
-  render();
-  document.getElementById("q").addEventListener("input", (e) => {
+  if (saved && (saved.scrollY || saved.rendered)) restoreRender(saved);
+  else renderFresh();
+
+  let searchTimer;
+  qInput.addEventListener("input", (e) => {
     query = e.target.value.trim();
-    render();
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(renderFresh, 130); // debounce so typing stays smooth
+  });
+  // remember position so browser Back / reload returns to the same spot
+  addEventListener("pagehide", saveState);
+  addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") saveState();
   });
   // Mobile: toggle the collapsible filters panel
   const ft = document.getElementById("filterToggle");
@@ -67,7 +85,7 @@ function buildCats() {
       activeCat = c;
       document.querySelectorAll(".chip").forEach((x) => x.classList.remove("active"));
       el.classList.add("active");
-      render();
+      renderFresh();
       // collapse the panel on mobile after choosing (no effect on desktop)
       const filters = document.getElementById("filters");
       const ft = document.getElementById("filterToggle");
@@ -92,26 +110,77 @@ function currentList() {
   return list;
 }
 
-function render() {
-  const list = currentList();
-  countEl.textContent = `${list.length} icon${list.length === 1 ? "" : "s"}`;
-  grid.innerHTML = "";
-  if (!list.length) {
-    grid.innerHTML = '<div class="empty">No icons match. Try a category, or a broader term.</div>';
-    return;
-  }
+// ---- Chunked / infinite-scroll rendering (keeps the DOM small for 1500+ icons) ----
+const CHUNK = 100;
+let renderList = [];
+let renderCursor = 0;
+let sentinel = null;
+const io = new IntersectionObserver(
+  (entries) => { if (entries.some((e) => e.isIntersecting)) appendChunk(); },
+  { rootMargin: "800px 0px" } // preload before hitting the bottom; viewport-based, so resolution-independent
+);
+
+function makeCard(icon) {
+  const card = document.createElement("div");
+  card.className = "card";
+  card.title = icon.name || `${icon.lib} #${icon.idx}`;
+  card.innerHTML =
+    `<div class="thumb"><img loading="lazy" src="thumbs/${icon.id}.svg" alt=""></div>` +
+    `<div class="name">${escapeHtml(icon.name || "-")}<span class="lib">${escapeHtml(icon.lib)}</span></div>`;
+  card.onclick = () => copyIcon(icon, card);
+  return card;
+}
+
+function appendChunk() {
+  if (sentinel) { io.unobserve(sentinel); sentinel.remove(); sentinel = null; }
+  const end = Math.min(renderCursor + CHUNK, renderList.length);
   const frag = document.createDocumentFragment();
-  for (const icon of list) {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.title = icon.name || `${icon.lib} #${icon.idx}`;
-    card.innerHTML =
-      `<div class="thumb"><img loading="lazy" src="thumbs/${icon.id}.svg" alt=""></div>` +
-      `<div class="name">${escapeHtml(icon.name || "-")}<span class="lib">${escapeHtml(icon.lib)}</span></div>`;
-    card.onclick = () => copyIcon(icon, card);
-    frag.appendChild(card);
-  }
+  for (let i = renderCursor; i < end; i++) frag.appendChild(makeCard(renderList[i]));
   grid.appendChild(frag);
+  renderCursor = end;
+  if (renderCursor < renderList.length) {
+    sentinel = document.createElement("div");
+    sentinel.style.cssText = "grid-column:1/-1;height:1px";
+    grid.appendChild(sentinel);
+    io.observe(sentinel); // if still on screen (large display), it fires again and loads more
+  }
+}
+
+function resetGrid() {
+  if (sentinel) { io.unobserve(sentinel); sentinel = null; }
+  renderList = currentList();
+  countEl.textContent = `${renderList.length} icon${renderList.length === 1 ? "" : "s"}`;
+  grid.innerHTML = "";
+  renderCursor = 0;
+  if (!renderList.length) {
+    grid.innerHTML = '<div class="empty">No icons match. Try a category, or a broader term.</div>';
+    return false;
+  }
+  return true;
+}
+
+function renderFresh() {
+  if (resetGrid()) appendChunk();
+  scrollTo(0, 0); // new result set -> back to top
+}
+
+function restoreRender(saved) {
+  if (!resetGrid()) return;
+  const target = Math.max(CHUNK, saved.rendered || CHUNK);
+  do { appendChunk(); } while (renderCursor < renderList.length && renderCursor < target);
+  requestAnimationFrame(() => scrollTo(0, saved.scrollY || 0));
+}
+
+// ---- Session state so Back / reload restores query, category and scroll ----
+function saveState() {
+  try {
+    sessionStorage.setItem("gallery", JSON.stringify({
+      query, cat: activeCat, scrollY: window.scrollY, rendered: renderCursor,
+    }));
+  } catch (e) {}
+}
+function loadState() {
+  try { return JSON.parse(sessionStorage.getItem("gallery")); } catch (e) { return null; }
 }
 
 async function loadLib(src) {

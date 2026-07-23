@@ -5,7 +5,7 @@ A self-hosted copy of [Excalidraw](https://excalidraw.com) component libraries f
 
 ## 🔎 Searchable icon gallery → https://andreasbros.github.io/excalidraw/
 
-Search all 1075 icons, filter by category, and **click any icon to copy it - then paste
+Search all 1505 icons, filter by category, and **click any icon to copy it - then paste
 straight into Excalidraw with `Ctrl+V`.** No proxy/library-browser needed.
 If `github.io` is blocked on your network: `git clone` this repo, then
 `cd docs && python3 -m http.server` and open <http://localhost:8000>.
@@ -123,15 +123,29 @@ e.g. "Cloud Run", see which file it's in, import that file.
 | `technology-logos.excalidrawlib` | 18 | Technology/vendor logos |
 | `it-logos.excalidrawlib` | 31 | IT product logos |
 
-## Adding more libraries
+## Adding more libraries (one command)
 
-Browse the full catalogue at <https://libraries.excalidraw.com> (from an unblocked
-network), note the author/filename, then pull the raw file:
+Browse <https://libraries.excalidraw.com>, note the **name** shown under a library, then
+run the helper. It resolves the name to the upstream file, downloads it into the category
+folder you choose, and rebuilds the gallery (thumbnails + data + `icons.json`):
+
 ```bash
-curl -sL "https://raw.githubusercontent.com/excalidraw/excalidraw-libraries/main/libraries/<author>/<name>.excalidrawlib" \
-  -o <category>/<name>.excalidrawlib
+# add by name into a category folder, then rebuild:
+python3 tools/add-library.py --category misc "Robots" "Traffic signs" "Stars"
+
+# or pass the raw source path (author/file.excalidrawlib):
+python3 tools/add-library.py --category logos zanetworker/red-hat.excalidrawlib
+
+# search the catalogue first (no download):
+python3 tools/add-library.py --search kubernetes
 ```
-AWS, Azure, Oracle Cloud, VMware, ArchiMate, UML and more are all available there.
+
+Categories are just folder names (`gcp`, `aws`, `azure`, `oracle`, `architecture`,
+`network`, `cloud-k8s-devops`, `logos`, `diagrams`, `ui`, `misc`) - pass a new one and it
+becomes a new filter chip automatically. After it rebuilds, `git add -A && git commit && git push`
+to publish. To rebuild without adding (e.g. after editing a file), run `python3 tools/build.py`.
+
+VMware, ArchiMate, UML and hundreds more are all available upstream.
 
 ## Attribution & license
 
