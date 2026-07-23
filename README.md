@@ -3,6 +3,13 @@
 A self-hosted copy of [Excalidraw](https://excalidraw.com) component libraries for
 **GCP, software/system architecture, and networking** diagrams.
 
+## 🔎 Searchable icon gallery → https://andreasbros.github.io/excalidraw/
+
+Search all 628 icons, filter by category, and **click any icon to copy it — then paste
+straight into Excalidraw with `Ctrl+V`.** No proxy/library-browser needed.
+If `github.io` is blocked on your network: `git clone` this repo, then
+`cd docs && python3 -m http.server` and open <http://localhost:8000>.
+
 Mirror in case corporate proxy blocks `libraries.excalidraw.com`. All files
 are the original `.excalidrawlib` JSON from
 [`excalidraw/excalidraw-libraries`](https://github.com/excalidraw/excalidraw-libraries)
