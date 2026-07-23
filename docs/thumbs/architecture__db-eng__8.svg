@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="7474.00 974.74 330.74 400.26" width="331" height="400"><rect x="7493.56" y="996.00" width="305.18" height="373.00" rx="0" stroke="#000000" stroke-width="1" opacity="1.0" fill="#868e96"/><rect x="7480.00" y="980.74" width="305.18" height="373.00" rx="0" stroke="#000000" stroke-width="1" opacity="1.0" fill="#ffffff"/><polyline points="7499.40,1024.08 7770.67,1024.08" fill="none" stroke="#000000" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><polyline points="7686.98,999.66 7686.98,1341.39" fill="none" stroke="#000000" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><text x="7513.91" y="1014.65" font-size="16.954380748861944" fill="#000000" opacity="1.0" font-family="sans-serif">EMPNO</text><text x="7598.68" y="1014.65" font-size="16.954380748861947" fill="#000000" opacity="1.0" font-family="sans-serif">ENAME</text><text x="7700.41" y="1014.65" font-size="16.954380748861947" fill="#000000" opacity="1.0" font-family="sans-serif">SAL</text><text x="7598.68" y="1048.56" font-size="16.954380748861947" fill="#000000" opacity="1.0" font-family="sans-serif">SMITH
+ALLEN
+WARD
+JONES
+MARTIN
+BLAKE
+CLARK
+SCOTT
+KING
+TURNER
+ADAMS
+JAMES
+FORD
+MILLER</text><text x="7700.41" y="1048.56" font-size="16.954380748861947" fill="#000000" opacity="1.0" font-family="sans-serif">800
+1600
+1250
+2975
+1250
+2850
+2450
+3000
+5000
+1500
+1100
+950
+3000
+1300</text><text x="7513.91" y="1048.56" font-size="16.95438074886195" fill="#000000" opacity="1.0" font-family="sans-serif">7369
+7499
+7521
+7566
+7654
+7698
+7782
+7788
+7839
+7844
+7876
+7900
+7902
+7934</text><polyline points="7584.63,998.66 7584.63,1340.39" fill="none" stroke="#000000" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/></svg>

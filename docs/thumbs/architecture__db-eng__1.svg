@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="6014.58 994.00 370.74 497.00" width="371" height="497"><polyline points="6020.81,1045.28 6020.81,1332.44 6027.09,1384.37 6070.20,1403.45 6134.78,1418.53 6203.64,1422.43 6262.43,1418.55 6317.58,1408.94 6372.58,1382.32 6376.34,1332.44 6379.32,1084.39 6374.79,1044.03 6330.23,1022.49 6280.22,1010.30 6215.20,1006.71 6173.93,1006.82 6086.06,1014.57 6020.81,1045.28" fill="none" stroke="#495057" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="6199.52" cy="1048.65" rx="178.94" ry="48.65" stroke="#495057" stroke-width="1" opacity="1.0" fill="#ffffff"/><rect x="6136.04" y="1186.64" width="132.84" height="162.36" rx="0" stroke="#000000" stroke-width="1" opacity="1.0" fill="#868e96"/><rect x="6130.14" y="1180.00" width="132.84" height="162.36" rx="0" stroke="#000000" stroke-width="1" opacity="1.0" fill="#ffffff"/><polyline points="6137.93,1198.22 6256.01,1198.22" fill="none" stroke="#000000" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><polyline points="6219.78,1187.61 6219.78,1336.36" fill="none" stroke="#000000" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><text x="6144.90" y="1194.76" font-size="7.379912663755477" fill="#000000" opacity="1.0" font-family="sans-serif">EMPNO</text><text x="6181.80" y="1194.76" font-size="7.37991266375548" fill="#000000" opacity="1.0" font-family="sans-serif">ENAME</text><text x="6226.08" y="1194.76" font-size="7.37991266375548" fill="#000000" opacity="1.0" font-family="sans-serif">SAL</text><text x="6181.80" y="1209.52" font-size="7.379912663755477" fill="#000000" opacity="1.0" font-family="sans-serif">SMITH
+ALLEN
+WARD
+JONES
+MARTIN
+BLAKE
+CLARK
+SCOTT
+KING
+TURNER
+ADAMS
+JAMES
+FORD
+MILLER</text><text x="6226.08" y="1209.52" font-size="7.37991266375548" fill="#000000" opacity="1.0" font-family="sans-serif">800
+1600
+1250
+2975
+1250
+2850
+2450
+3000
+5000
+1500
+1100
+950
+3000
+1300</text><text x="6144.90" y="1209.52" font-size="7.379912663755483" fill="#000000" opacity="1.0" font-family="sans-serif">7369
+7499
+7521
+7566
+7654
+7698
+7782
+7788
+7839
+7844
+7876
+7900
+7902
+7934</text><polyline points="6175.09,1187.32 6175.09,1336.06" fill="none" stroke="#000000" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><text x="6037.51" y="1476.00" font-size="36" fill="#000000" opacity="1.0" font-family="sans-serif">RDBMS Database</text></svg>

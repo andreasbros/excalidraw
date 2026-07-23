@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="5095.18 1094.00 557.31 713.12" width="557" height="713"><polyline points="5101.18,1168.79 5101.18,1605.57 5110.74,1684.56 5176.32,1713.58 5274.54,1736.53 5379.28,1742.46 5468.71,1736.55 5552.58,1721.94 5636.24,1681.45 5641.96,1605.57 5646.50,1228.29 5639.61,1166.89 5571.83,1134.14 5495.76,1115.58 5396.86,1110.13 5334.09,1110.29 5200.43,1122.09 5101.18,1168.79" fill="none" stroke="#495057" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="5373.98" cy="1174.00" rx="272.17" ry="74.00" stroke="#495057" stroke-width="1" opacity="1.0" fill="#ffffff"/><text x="5190.77" y="1316.00" font-size="36" fill="#000000" opacity="1.0" font-family="sans-serif">Classified Database</text><rect x="5309.23" y="1366.70" width="134.04" height="163.83" rx="0" stroke="#000000" stroke-width="1" opacity="1.0" fill="#868e96"/><rect x="5303.27" y="1360.00" width="134.04" height="163.83" rx="0" stroke="#000000" stroke-width="1" opacity="1.0" fill="#ffffff"/><polyline points="5311.10,1378.47 5430.25,1378.47" fill="none" stroke="#000000" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><polyline points="5393.67,1367.81 5393.67,1517.91" fill="none" stroke="#000000" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><text x="5318.16" y="1374.89" font-size="7.446808510638638" fill="#000000" opacity="1.0" font-family="sans-serif">EMPNO</text><text x="5355.40" y="1374.89" font-size="7.446808510638641" fill="#000000" opacity="1.0" font-family="sans-serif">ENAME</text><text x="5400.08" y="1374.89" font-size="7.446808510638642" fill="#000000" opacity="1.0" font-family="sans-serif">SAL</text><text x="5355.40" y="1389.79" font-size="7.446808510638639" fill="#000000" opacity="1.0" font-family="sans-serif">SMITH
+ALLEN
+WARD
+JONES
+MARTIN
+BLAKE
+CLARK
+SCOTT
+KING
+TURNER
+ADAMS
+JAMES
+FORD
+MILLER</text><text x="5400.08" y="1389.79" font-size="7.446808510638641" fill="#000000" opacity="1.0" font-family="sans-serif">800
+1600
+1250
+2975
+1250
+2850
+2450
+3000
+5000
+1500
+1100
+950
+3000
+1300</text><text x="5318.16" y="1389.79" font-size="7.446808510638646" fill="#000000" opacity="1.0" font-family="sans-serif">7369
+7499
+7521
+7566
+7654
+7698
+7782
+7788
+7839
+7844
+7876
+7900
+7902
+7934</text><polyline points="5348.57,1367.63 5348.57,1517.73" fill="none" stroke="#000000" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><text x="5426.27" y="1648.00" font-size="28" fill="#000000" opacity="1.0" font-family="sans-serif">DATA</text><polyline points="5386.30,1624.89 5386.30,1646.32 5386.77,1650.20 5389.99,1651.62 5394.81,1652.75 5399.95,1653.04 5404.34,1652.75 5408.45,1652.03 5412.56,1650.04 5412.84,1646.32 5413.06,1627.81 5412.72,1624.80 5409.39,1623.19 5405.66,1622.28 5400.81,1622.01 5397.73,1622.02 5391.17,1622.60 5386.30,1624.89" fill="none" stroke="#495057" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="5399.74" cy="1625.59" rx="13.35" ry="3.63" stroke="#495057" stroke-width="1" opacity="1.0" fill="#ffffff"/><text x="5246.27" y="1608.00" font-size="28" fill="#000000" opacity="1.0" font-family="sans-serif">SYSTEM</text><polyline points="5206.30,1585.07 5206.30,1606.50 5206.77,1610.37 5209.99,1611.80 5214.81,1612.92 5219.95,1613.21 5224.34,1612.92 5228.45,1612.21 5232.56,1610.22 5232.84,1606.50 5233.06,1587.99 5232.72,1584.97 5229.39,1583.37 5225.66,1582.46 5220.81,1582.19 5217.73,1582.20 5211.17,1582.78 5206.30,1585.07" fill="none" stroke="#2b8a3e" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="5219.74" cy="1585.42" rx="13.35" ry="3.63" stroke="#2b8a3e" stroke-width="1" opacity="1.0" fill="#ffffff"/><text x="5246.27" y="1648.00" font-size="28" fill="#000000" opacity="1.0" font-family="sans-serif">SYSAUX</text><polyline points="5206.30,1625.07 5206.30,1646.50 5206.77,1650.37 5209.99,1651.80 5214.81,1652.92 5219.95,1653.21 5224.34,1652.92 5228.45,1652.21 5232.56,1650.22 5232.84,1646.50 5233.06,1627.99 5232.72,1624.97 5229.39,1623.37 5225.66,1622.46 5220.81,1622.19 5217.73,1622.20 5211.17,1622.78 5206.30,1625.07" fill="none" stroke="#2b8a3e" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="5219.74" cy="1625.42" rx="13.35" ry="3.63" stroke="#2b8a3e" stroke-width="1" opacity="1.0" fill="#ffffff"/><text x="5246.27" y="1688.00" font-size="28" fill="#000000" opacity="1.0" font-family="sans-serif">UNDO</text><polyline points="5206.30,1665.07 5206.30,1686.50 5206.77,1690.37 5209.99,1691.80 5214.81,1692.92 5219.95,1693.21 5224.34,1692.92 5228.45,1692.21 5232.56,1690.22 5232.84,1686.50 5233.06,1667.99 5232.72,1664.97 5229.39,1663.37 5225.66,1662.46 5220.81,1662.19 5217.73,1662.20 5211.17,1662.78 5206.30,1665.07" fill="none" stroke="#2b8a3e" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="5219.74" cy="1665.42" rx="13.35" ry="3.63" stroke="#2b8a3e" stroke-width="1" opacity="1.0" fill="#ffffff"/><text x="5426.27" y="1688.00" font-size="28" fill="#000000" opacity="1.0" font-family="sans-serif">SECRET</text><polyline points="5386.30,1665.07 5386.30,1686.50 5386.77,1690.37 5389.99,1691.80 5394.81,1692.92 5399.95,1693.21 5404.34,1692.92 5408.45,1692.21 5412.56,1690.22 5412.84,1686.50 5413.06,1667.99 5412.72,1664.97 5409.39,1663.37 5405.66,1662.46 5400.81,1662.19 5397.73,1662.20 5391.17,1662.78 5386.30,1665.07" fill="none" stroke="#c92a2a" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="5399.74" cy="1665.42" rx="13.35" ry="3.63" stroke="#c92a2a" stroke-width="1" opacity="1.0" fill="#ffffff"/><text x="5426.27" y="1608.00" font-size="28" fill="#000000" opacity="1.0" font-family="sans-serif">TEMP</text><polyline points="5386.30,1585.07 5386.30,1606.50 5386.77,1610.37 5389.99,1611.80 5394.81,1612.92 5399.95,1613.21 5404.34,1612.92 5408.45,1612.21 5412.56,1610.22 5412.84,1606.50 5413.06,1587.99 5412.72,1584.97 5409.39,1583.37 5405.66,1582.46 5400.81,1582.19 5397.73,1582.20 5391.17,1582.78 5386.30,1585.07" fill="none" stroke="#364fc7" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="5399.74" cy="1585.42" rx="13.35" ry="3.63" stroke="#364fc7" stroke-width="1" opacity="1.0" fill="#ffffff"/></svg>

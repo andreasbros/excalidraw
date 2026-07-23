@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="7754.00 74.00 442.00 182.00" width="442" height="182"><rect x="7770.00" y="90.00" width="420.00" height="160.00" rx="0" stroke="#000000" stroke-width="1" opacity="1.0" fill="#868e96"/><rect x="7760.00" y="80.00" width="420.00" height="160.00" rx="0" stroke="#000000" stroke-width="1" opacity="1.0" fill="#ffffff"/><text x="7914.00" y="180.54" font-size="28" fill="#495057" opacity="1.0" font-family="sans-serif">TDE Table
+Encryption Key</text><text x="7914.00" y="151.34" font-size="53.87755102040816" fill="#000000" opacity="1.0" font-family="sans-serif">Columns</text><rect x="7784.26" y="104.79" width="95.74" height="117.02" rx="0" stroke="#000000" stroke-width="1" opacity="1.0" fill="#868e96"/><rect x="7826.69" y="123.04" width="30.99" height="37.87" rx="0" stroke="#000000" stroke-width="1" opacity="1.0" fill="#868e96"/><rect x="7825.31" y="121.49" width="30.99" height="37.87" rx="0" stroke="#000000" stroke-width="1" opacity="1.0" fill="#ffffff"/><polyline points="7827.05,125.45 7854.59,125.45" fill="none" stroke="#000000" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><polyline points="7845.58,122.73 7845.58,157.42" fill="none" stroke="#000000" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><text x="7828.75" y="124.94" font-size="1.721514961087687" fill="#000000" opacity="1.0" font-family="sans-serif">EMPNO</text><text x="7837.36" y="124.94" font-size="1.721514961087689" fill="#000000" opacity="1.0" font-family="sans-serif">ENAME</text><text x="7847.69" y="124.94" font-size="1.7215149610876892" fill="#000000" opacity="1.0" font-family="sans-serif">SAL</text><text x="7837.36" y="128.38" font-size="1.7215149610876863" fill="#000000" opacity="1.0" font-family="sans-serif">SMITH
+ALLEN
+WARD
+JONES
+MARTIN
+BLAKE
+CLARK
+SCOTT
+KING
+TURNER
+ADAMS
+JAMES
+FORD
+MILLER</text><text x="7847.69" y="128.38" font-size="1.7215149610876892" fill="#000000" opacity="1.0" font-family="sans-serif">800
+1600
+1250
+2975
+1250
+2850
+2450
+3000
+5000
+1500
+1100
+950
+3000
+1300</text><text x="7828.75" y="128.38" font-size="1.7215149610876892" fill="#000000" opacity="1.0" font-family="sans-serif">7369
+7499
+7521
+7566
+7654
+7698
+7782
+7788
+7839
+7844
+7876
+7900
+7902
+7934</text><polyline points="7835.16,122.68 7835.16,157.38" fill="none" stroke="#000000" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><polyline points="7834.81,138.60 7850.66,138.46 7852.99,140.06 7851.84,142.05 7849.81,142.95 7849.39,142.27 7848.98,143.16 7848.29,141.88 7847.53,143.23 7846.81,142.34 7846.00,143.19 7844.88,142.26 7843.83,143.07 7842.86,142.50 7841.70,143.47 7840.93,142.01 7839.76,143.33 7834.51,143.52 7834.81,138.60" fill="none" stroke="#000000" stroke-width="2" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="7834.58" cy="141.20" rx="4.62" ry="4.62" stroke="#000000" stroke-width="2" opacity="1.0" fill="#868e96"/><ellipse cx="7832.60" cy="141.20" rx="1.32" ry="1.32" stroke="#000000" stroke-width="2" opacity="1.0" fill="#ffffff"/><polyline points="7839.39,139.40 7849.94,139.40" fill="none" stroke="#000000" stroke-width="2" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><rect x="7780.00" y="100.00" width="95.74" height="117.02" rx="0" stroke="#ffffff" stroke-width="1" opacity="1.0" fill="#ffffff"/><rect x="7780.00" y="100.00" width="95.74" height="117.02" rx="0" stroke="#000000" stroke-width="1" opacity="1.0" fill="#fa5252"/><polyline points="7785.86,113.88 7870.96,113.88" fill="none" stroke="#000000" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><polyline points="7844.63,106.46 7844.63,213.67" fill="none" stroke="#000000" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><text x="7790.64" y="110.64" font-size="5.31914893617029" fill="#000000" opacity="1.0" font-family="sans-serif">EMPNO</text><text x="7817.23" y="110.64" font-size="5.319148936170291" fill="#000000" opacity="1.0" font-family="sans-serif">ENAME</text><text x="7849.15" y="110.64" font-size="5.319148936170293" fill="#000000" opacity="1.0" font-family="sans-serif">SAL</text><text x="7817.23" y="121.28" font-size="5.31914893617029" fill="#000000" opacity="1.0" font-family="sans-serif">SMITH
+ALLEN
+WARD
+JONES
+MARTIN
+BLAKE
+CLARK
+SCOTT
+KING
+TURNER
+ADAMS
+JAMES
+FORD
+MILLER</text><text x="7849.15" y="121.28" font-size="5.319148936170292" fill="#000000" opacity="1.0" font-family="sans-serif">800
+1600
+1250
+2975
+1250
+2850
+2450
+3000
+5000
+1500
+1100
+950
+3000
+1300</text><text x="7790.64" y="121.28" font-size="5.319148936170292" fill="#000000" opacity="1.0" font-family="sans-serif">7369
+7499
+7521
+7566
+7654
+7698
+7782
+7788
+7839
+7844
+7876
+7900
+7902
+7934</text><polyline points="7812.62,105.82 7812.62,213.03" fill="none" stroke="#000000" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><polyline points="7803.87,133.85 7852.83,133.42 7860.03,138.38 7856.48,144.52 7850.21,147.29 7848.90,145.20 7847.64,147.94 7845.50,143.98 7843.14,148.15 7840.92,145.43 7838.43,148.05 7834.98,145.18 7831.73,147.66 7828.72,145.90 7825.15,148.90 7822.76,144.38 7819.15,148.47 7802.94,149.05 7803.87,133.85" fill="none" stroke="#000000" stroke-width="2" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="7803.15" cy="141.90" rx="14.27" ry="14.27" stroke="#000000" stroke-width="2" opacity="1.0" fill="#868e96"/><ellipse cx="7797.03" cy="141.90" rx="4.08" ry="4.08" stroke="#000000" stroke-width="2" opacity="1.0" fill="#ffffff"/><polyline points="7817.99,136.34 7850.60,136.34" fill="none" stroke="#000000" stroke-width="2" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><polyline points="7814.87,171.85 7863.83,171.42 7871.03,176.38 7867.48,182.52 7861.21,185.29 7859.90,183.20 7858.64,185.94 7856.50,181.98 7854.14,186.15 7851.92,183.43 7849.43,186.05 7845.98,183.18 7842.73,185.66 7839.72,183.90 7836.15,186.90 7833.76,182.38 7830.15,186.47 7813.94,187.05 7814.87,171.85" fill="none" stroke="#000000" stroke-width="2" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="7814.15" cy="179.90" rx="14.27" ry="14.27" stroke="#000000" stroke-width="2" opacity="1.0" fill="#868e96"/><ellipse cx="7808.03" cy="179.90" rx="4.08" ry="4.08" stroke="#000000" stroke-width="2" opacity="1.0" fill="#ffffff"/><polyline points="7828.99,174.34 7861.60,174.34" fill="none" stroke="#000000" stroke-width="2" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/></svg>
