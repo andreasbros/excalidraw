@@ -69,9 +69,21 @@ Azure Data Box, Azure Data Box Gateway, Azure NetApp Files, Azure Stack Edge, Da
 
 Analysis Services, Azure Cache for Redis, Azure Cosmos DB, Azure Data Explorer, Azure Data Factory, Azure Database for MariaDB, Azure Database for MySQL, Azure Database for Postgres, Azure Databricks, Azure Event Hubs, Azure Machine Learning, Azure Policy, Azure SQL Database, Azure SQLMI, Azure Synapse Analytics, Cognitive Services, Cost Management and billig, Power BI, SQL Server on Azure VM
 
+### `brands/amex.excalidrawlib`  (1 named / 1 total)
+
+American Express
+
 ### `brands/anthropic.excalidrawlib`  (1 named / 1 total)
 
 Anthropic
+
+### `brands/applepay.excalidrawlib`  (1 named / 1 total)
+
+Apple Pay
+
+### `brands/aws.excalidrawlib`  (1 named / 1 total)
+
+AWS
 
 ### `brands/chatgpt.excalidrawlib`  (1 named / 1 total)
 
@@ -81,13 +93,37 @@ ChatGPT
 
 Claude
 
+### `brands/cloudflare.excalidrawlib`  (1 named / 1 total)
+
+Cloudflare
+
+### `brands/digitalocean.excalidrawlib`  (1 named / 1 total)
+
+DigitalOcean
+
 ### `brands/gemini.excalidrawlib`  (1 named / 1 total)
 
 Gemini
 
+### `brands/googlepay.excalidrawlib`  (1 named / 1 total)
+
+Google Pay
+
+### `brands/hetzner.excalidrawlib`  (1 named / 1 total)
+
+Hetzner
+
 ### `brands/hsbc.excalidrawlib`  (3 named / 3 total)
 
 HSBC hexagon, HSBC symbol (mono), HSBC wordmark
+
+### `brands/jenkins.excalidrawlib`  (1 named / 1 total)
+
+Jenkins
+
+### `brands/mastercard.excalidrawlib`  (1 named / 1 total)
+
+Mastercard
 
 ### `brands/moodys.excalidrawlib`  (1 named / 1 total)
 
@@ -101,13 +137,37 @@ Nillion
 
 OpenAI
 
+### `brands/ovh.excalidrawlib`  (1 named / 1 total)
+
+OVHcloud
+
+### `brands/paypal.excalidrawlib`  (1 named / 1 total)
+
+PayPal
+
+### `brands/revolut.excalidrawlib`  (1 named / 1 total)
+
+Revolut
+
 ### `brands/simzip.excalidrawlib`  (1 named / 1 total)
 
 sim.zip
 
+### `brands/stripe.excalidrawlib`  (1 named / 1 total)
+
+Stripe
+
 ### `brands/tele1.excalidrawlib`  (1 named / 1 total)
 
 TELE1
+
+### `brands/twilio.excalidrawlib`  (1 named / 1 total)
+
+Twilio
+
+### `brands/visa.excalidrawlib`  (1 named / 1 total)
+
+Visa
 
 ### `cloud-k8s-devops/cloud-design-patterns.excalidrawlib`  (24 components, all unnamed)
 
