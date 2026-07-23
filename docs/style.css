@@ -12,7 +12,8 @@ body{background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Se
 header{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--border);padding:14px 18px 10px}
 .bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 h1{font-size:18px;margin:0;white-space:nowrap}
-#q{flex:1;min-width:240px;padding:10px 14px;font-size:15px;border:1px solid var(--border);
+/* font-size must be >=16px or iOS Safari zooms the page on focus (and stays zoomed) */
+#q{flex:1;min-width:240px;padding:10px 14px;font-size:16px;border:1px solid var(--border);
    border-radius:10px;background:var(--card);color:var(--fg)}
 #q:focus{outline:2px solid var(--accent);border-color:transparent}
 .count{color:var(--muted);font-size:13px;white-space:nowrap}
