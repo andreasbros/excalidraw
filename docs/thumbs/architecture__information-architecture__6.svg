@@ -1,1 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="948.25 449.23 72.00 52.00" width="72" height="52"><polyline points="974.25,455.23 954.25,475.23 974.25,495.23 994.25,475.23 974.25,455.23" fill="#fff" stroke="#000000" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><rect x="954.25" y="455.23" width="40.00" height="40.00" rx="0" stroke="none" stroke-width="1" opacity="1.0" fill="none"/></svg>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" width="52" height="52">
+  <!-- svg-source:excalidraw -->
+  
+  <defs>
+    
+    
+  </defs>
+  <g stroke-linecap="round"><g transform="translate(26 6) rotate(0 0 20)" fill-rule="evenodd"><path d="M0 0 L-20 20 L0 40 L20 20 L0 0" stroke="none" stroke-width="0" fill="#fff" fill-rule="evenodd"></path><path d="M0 0 C-6.2 6.2, -12.4 12.4, -20 20 M0 0 C-6.77 6.77, -13.54 13.54, -20 20 M-20 20 C-15.58 24.42, -11.15 28.85, 0 40 M-20 20 C-13.73 26.27, -7.45 32.55, 0 40 M0 40 C4.34 35.66, 8.69 31.31, 20 20 M0 40 C7.03 32.97, 14.05 25.95, 20 20 M20 20 C14.99 14.99, 9.98 9.98, 0 0 M20 20 C15.63 15.63, 11.26 11.26, 0 0 M0 0 C0 0, 0 0, 0 0 M0 0 C0 0, 0 0, 0 0" stroke="#000000" stroke-width="1" fill="none"></path></g></g><mask></mask><g stroke-linecap="round" transform="translate(6 6) rotate(0 20 20)"><path d="M0 0 C12.66 0, 25.32 0, 40 0 M0 0 C13.29 0, 26.59 0, 40 0 M40 0 C40 11.23, 40 22.45, 40 40 M40 0 C40 12.91, 40 25.83, 40 40 M40 40 C25.8 40, 11.61 40, 0 40 M40 40 C29.9 40, 19.8 40, 0 40 M0 40 C0 24.53, 0 9.06, 0 0 M0 40 C0 28.77, 0 17.53, 0 0" stroke="transparent" stroke-width="1" fill="none"></path></g></svg>

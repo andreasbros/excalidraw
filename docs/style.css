@@ -31,6 +31,11 @@ header{position:sticky;top:0;z-index:10;background:var(--bg);
 #q{flex:1;min-width:60px;height:100%;border:none;outline:none;background:transparent;
   color:var(--fg);font-size:16px;padding:0}
 #q::placeholder{color:var(--muted)}
+#q::-webkit-search-cancel-button{display:none} /* use our own clear button */
+.clear-x{border:none;background:transparent;color:var(--muted);cursor:pointer;
+  font-size:20px;line-height:1;padding:0 2px;flex:0 0 auto}
+.clear-x:hover{color:var(--fg)}
+.clear-x.hidden{display:none}
 .ac{display:inline-flex;align-items:center;gap:1px;max-width:260px;flex:0 1 auto;
   background:var(--accent);color:#fff;border-radius:8px;padding:4px 3px 4px 10px;
   font-size:12.5px;font-weight:500}

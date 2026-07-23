@@ -109,8 +109,14 @@ def main():
     if added and not args.no_build:
         print("rebuilding gallery...")
         sys.path.insert(0, HERE)
-        import build
+        import build, subprocess, shutil
         build.build()
+        node = shutil.which("node")
+        if node:
+            print("rendering faithful thumbnails (Excalidraw exportToSvg)...")
+            subprocess.run([node, os.path.join(HERE, "render-thumbs.mjs")], check=False)
+        else:
+            print("note: install node + `npm i puppeteer-core`, then run tools/render-thumbs.mjs")
         print("done. commit + push docs/ to publish.")
 
 if __name__ == "__main__":

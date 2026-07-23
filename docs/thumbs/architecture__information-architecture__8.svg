@@ -1,1 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="1110.62 459.79 65.33 32.00" width="65" height="32"><polyline points="1129.95,465.79 1143.29,465.79 1156.62,485.79 1116.62,485.79 1129.95,465.79" fill="#fff" stroke="#000000" stroke-width="1" opacity="1.0" stroke-linecap="round" stroke-linejoin="round"/><rect x="1116.62" y="465.79" width="40.00" height="20.00" rx="0" stroke="none" stroke-width="1" opacity="1.0" fill="none"/></svg>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52.000000000000455 32" width="52.000000000000455" height="32">
+  <!-- svg-source:excalidraw -->
+  
+  <defs>
+    
+    
+  </defs>
+  <g stroke-linecap="round"><g transform="translate(19.333333333333258 6) rotate(0 6.6666666666667425 10)" fill-rule="evenodd"><path d="M0 0 L13.33 0 L26.67 20 L-13.33 20 L0 0" stroke="none" stroke-width="0" fill="#fff" fill-rule="evenodd"></path><path d="M0 0 C3.57 0, 7.14 0, 13.33 0 M0 0 C4.68 0, 9.36 0, 13.33 0 M13.33 0 C16.32 4.47, 19.3 8.95, 26.67 20 M13.33 0 C16.72 5.08, 20.11 10.16, 26.67 20 M26.67 20 C12.87 20, -0.93 20, -13.33 20 M26.67 20 C13.01 20, -0.65 20, -13.33 20 M-13.33 20 C-8.37 12.56, -3.42 5.12, 0 0 M-13.33 20 C-8.1 12.15, -2.87 4.31, 0 0 M0 0 C0 0, 0 0, 0 0 M0 0 C0 0, 0 0, 0 0" stroke="#000000" stroke-width="1" fill="none"></path></g></g><mask></mask><g stroke-linecap="round" transform="translate(6.000000000000455 6) rotate(0 20 10)"><path d="M0 0 C12 0, 23.99 0, 40 0 M0 0 C8.19 0, 16.37 0, 40 0 M40 0 C40 6.46, 40 12.92, 40 20 M40 0 C40 4.53, 40 9.05, 40 20 M40 20 C24.17 20, 8.33 20, 0 20 M40 20 C25.63 20, 11.25 20, 0 20 M0 20 C0 14.98, 0 9.95, 0 0 M0 20 C0 15.01, 0 10.02, 0 0" stroke="transparent" stroke-width="1" fill="none"></path></g></svg>

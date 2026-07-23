@@ -1,1 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="340.85 377.25 176.29 75.38" width="176" height="75"><rect x="346.85" y="383.25" width="164.29" height="63.38" rx="0" stroke="#000000" stroke-width="1" opacity="1.0" fill="white"/><text x="350.85" y="437.05" font-size="20" fill="#000000" opacity="1.0" font-family="sans-serif">Person Name</text><text x="350.85" y="410.75" font-size="20" fill="#000000" opacity="1.0" font-family="sans-serif">Area</text></svg>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 176.29032258064512 75.38154348713755" width="176.29032258064512" height="75.38154348713755">
+  <!-- svg-source:excalidraw -->
+  
+  <defs>
+    
+    
+  </defs>
+  <g stroke-linecap="round" transform="translate(6 6) rotate(0 82.14516129032256 31.690771743568774)"><path d="M1.58 0.26 L164.9 1.77 L166.25 63.63 L1.91 62.87" stroke="none" stroke-width="0" fill="white"></path><path d="M0 0 C64.75 1.84, 127.85 -0.45, 164.29 0 M0 0 C63.74 1.7, 127.03 1.18, 164.29 0 M164.29 0 C165.23 26.23, 165.36 51.44, 164.29 63.38 M164.29 0 C163.82 21.28, 165.03 44.63, 164.29 63.38 M164.29 63.38 C105.58 63.21, 47.12 64.26, 0 63.38 M164.29 63.38 C102.5 64.71, 43.11 64.98, 0 63.38 M0 63.38 C0.88 43.8, -0.1 26.6, 0 0 M0 63.38 C0.47 49.36, -0.94 34.92, 0 0" stroke="#000000" stroke-width="1" fill="none"></path></g><g transform="translate(10 39.799999999999955) rotate(0 63 12.5)"><text x="0" y="0" font-family="Virgil, Segoe UI Emoji" font-size="20px" fill="#000000" text-anchor="start" style="white-space: pre;" direction="ltr" dominant-baseline="text-before-edge">Person Name</text></g><g transform="translate(10 13.499999999999773) rotate(0 24 12.5)"><text x="0" y="0" font-family="Virgil, Segoe UI Emoji" font-size="20px" fill="#000000" text-anchor="start" style="white-space: pre;" direction="ltr" dominant-baseline="text-before-edge">Area</text></g></svg>

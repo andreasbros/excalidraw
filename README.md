@@ -142,8 +142,9 @@ python3 tools/add-library.py --search kubernetes
 
 Categories are just folder names (`gcp`, `aws`, `azure`, `oracle`, `architecture`,
 `network`, `cloud-k8s-devops`, `logos`, `diagrams`, `ui`, `misc`) - pass a new one and it
-becomes a new filter chip automatically. After it rebuilds, `git add -A && git commit && git push`
-to publish. To rebuild without adding (e.g. after editing a file), run `python3 tools/build.py`.
+becomes a new filter chip automatically. After it rebuilds (data + **faithful thumbnails** via Excalidraw's own `exportToSvg`,
+run in a headless browser), `git add -A && git commit && git push` to publish. To rebuild
+manually: `python3 tools/build.py && node tools/render-thumbs.mjs`.
 
 VMware, ArchiMate, UML and hundreds more are all available upstream.
 

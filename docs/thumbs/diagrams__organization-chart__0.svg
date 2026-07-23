@@ -1,1 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="341.97 468.98 176.29 49.83" width="176" height="50"><rect x="347.97" y="474.98" width="164.29" height="37.83" rx="0" stroke="#000000" stroke-width="1" opacity="1.0" fill="white"/><text x="350.85" y="498.78" font-size="20" fill="#000000" opacity="1.0" font-family="sans-serif">Person Name</text></svg>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 176.29032258064512 49.82598793158195" width="176.29032258064512" height="49.82598793158195">
+  <!-- svg-source:excalidraw -->
+  
+  <defs>
+    
+    
+  </defs>
+  <g stroke-linecap="round" transform="translate(6 6) rotate(0 82.14516129032256 18.912993965790974)"><path d="M-0.44 -1.68 L162.56 1.58 L164.55 38.43 L1.77 39.79" stroke="none" stroke-width="0" fill="white"></path><path d="M0 0 C56.92 -1.1, 109.05 -0.99, 164.29 0 M0 0 C58.7 1.54, 114.93 0.9, 164.29 0 M164.29 0 C165.98 15.17, 163.96 27.42, 164.29 37.83 M164.29 0 C164.86 13.22, 164.58 26.02, 164.29 37.83 M164.29 37.83 C128.25 40.3, 89.68 39.43, 0 37.83 M164.29 37.83 C116.55 39.21, 68.21 37.61, 0 37.83 M0 37.83 C-0.16 24.7, -0.28 15.38, 0 0 M0 37.83 C-0.7 27.74, 0.11 17.91, 0 0" stroke="#000000" stroke-width="1" fill="none"></path></g><g transform="translate(8.888888888888914 9.800000000000352) rotate(0 63 12.5)"><text x="0" y="0" font-family="Virgil, Segoe UI Emoji" font-size="20px" fill="#000000" text-anchor="start" style="white-space: pre;" direction="ltr" dominant-baseline="text-before-edge">Person Name</text></g></svg>

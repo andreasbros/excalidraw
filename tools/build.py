@@ -63,7 +63,6 @@ def build():
     os.makedirs(os.path.join(DOCS, "data"), exist_ok=True)
     authors = author_map()
     icons = []
-    nthumb = 0
     for f in sorted(glob.glob(os.path.join(ROOT, "*", "*.excalidrawlib"))):
         cat = os.path.basename(os.path.dirname(f))
         if cat in SKIP_DIRS:
@@ -81,12 +80,9 @@ def build():
             els = it.get("elements", it) if isinstance(it, dict) else it
             name = (it.get("name") or "").strip() if isinstance(it, dict) else ""
             iid = f"{src}__{i}"
-            try:
-                open(os.path.join(DOCS, "thumbs", iid + ".svg"), "w").write(item_thumb(els, libfiles))
-                nthumb += 1
-            except Exception as ex:
-                print("thumb fail", iid, ex)
-                continue
+            # Thumbnails are rendered separately by tools/render-thumbs.mjs using
+            # Excalidraw's own exportToSvg (100% faithful). build.py only emits
+            # data + icons.json so it never clobbers those faithful thumbnails.
             ifiles = {e["fileId"]: libfiles[e["fileId"]] for e in els
                       if e.get("fileId") in libfiles}
             entry = {"name": name, "elements": els}
@@ -121,7 +117,7 @@ def build():
 
     from collections import Counter
     by = Counter(i["catLabel"] for i in icons)
-    print(f"built {len(icons)} icons, {nthumb} thumbs")
+    print(f"built {len(icons)} icons  (now run: node tools/render-thumbs.mjs)")
     print("by category:", dict(by))
     return len(icons)
 

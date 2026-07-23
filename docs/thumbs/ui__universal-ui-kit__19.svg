@@ -1,1 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="937.79 502.77 147.50 42.32" width="148" height="42"><rect x="943.79" y="508.77" width="32.06" height="30.32" rx="0" stroke="#000000" stroke-width="2" opacity="1.0" fill="none"/><text x="991.44" y="531.32" font-size="19.9658509648919" fill="#000000" opacity="1.0" font-family="sans-serif">Checkbox</text></svg>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 147.5 42.322890025575475" width="147.5" height="42.322890025575475">
+  <!-- svg-source:excalidraw -->
+  
+  <defs>
+    
+    
+  </defs>
+  <g stroke-linecap="round" transform="translate(6 6) rotate(0 16.02781329923272 15.161445012787738)"><path d="M0 0 C7.98 -0.32, 15.8 0.22, 32.06 0 M0 0 C9.06 0.52, 17.06 0.36, 32.06 0 M32.06 0 C32.5 8.34, 31.71 16.27, 32.06 30.32 M32.06 0 C31.96 8.49, 32.19 16.18, 32.06 30.32 M32.06 30.32 C18.82 30.07, 8.16 31.2, 0 30.32 M32.06 30.32 C25.34 30.56, 17.54 30.51, 0 30.32 M0 30.32 C-0.09 19.07, 0.18 9.28, 0 0 M0 30.32 C-0.18 22.41, 0.35 14.71, 0 0" stroke="#000000" stroke-width="2" fill="none"></path></g><g transform="translate(53.650255754475666 8.593197802836528) rotate(0 43.92487212276217 12.478656853057458)"><text x="0" y="0" font-family="Virgil, Segoe UI Emoji" font-size="19.9658509648919px" fill="#000000" text-anchor="start" style="white-space: pre;" direction="ltr" dominant-baseline="text-before-edge">Checkbox</text></g></svg>

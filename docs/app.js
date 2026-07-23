@@ -49,6 +49,15 @@ async function init() {
   activeCat = (saved && saved.cat) || "all";
   const qInput = document.getElementById("q");
   qInput.value = query;
+  const clearBtn = document.getElementById("clearBtn");
+  clearBtn.classList.toggle("hidden", !query);
+  clearBtn.addEventListener("click", () => {
+    qInput.value = "";
+    query = "";
+    clearBtn.classList.add("hidden");
+    renderFresh();
+    qInput.focus();
+  });
   buildCats();
   updateActiveCatChip();
   document.querySelector("#activeCat .ac-x").addEventListener("click", () => {
@@ -63,6 +72,7 @@ async function init() {
   let searchTimer;
   qInput.addEventListener("input", (e) => {
     query = e.target.value.trim();
+    clearBtn.classList.toggle("hidden", !e.target.value);
     clearTimeout(searchTimer);
     searchTimer = setTimeout(renderFresh, 130); // debounce so typing stays smooth
   });
