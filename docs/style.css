@@ -128,8 +128,8 @@ kbd{background:var(--card);border:1px solid var(--border);border-radius:5px;padd
   color:var(--muted);cursor:pointer;z-index:2}
 .modal-close:hover{color:var(--fg)}
 .modal-close svg{width:18px;height:18px}
-.modal-preview{background:var(--tile);border-radius:16px;padding:28px;display:flex;
-  align-items:center;justify-content:center;height:min(44vh,340px)}
+.modal-preview{background:var(--tile);border-radius:16px;padding:14px;display:flex;
+  align-items:center;justify-content:center;height:min(58vh,460px)}
 .modal-preview img{max-width:100%;max-height:100%}
 .modal-meta{text-align:center;padding:0 30px}
 .modal-name{font-size:18px;font-weight:600;color:var(--fg);line-height:1.3;word-break:break-word}
@@ -164,7 +164,7 @@ kbd{background:var(--card);border:1px solid var(--border);border-radius:5px;padd
 .car-item.active{border-color:var(--accent)}
 .car-item img{max-width:100%;max-height:100%}
 @media (max-width:640px){
-  .modal{padding:0;align-items:flex-end}
-  .modal-panel{width:100%;max-height:92dvh;border-radius:20px 20px 0 0;padding:18px}
-  .modal-preview{height:34vh}
+  .modal{padding:14px} /* vertically centered (inherits align-items:center) */
+  .modal-panel{width:100%;max-height:calc(100dvh - 28px);padding:18px}
+  .modal-preview{height:42vh}
 }
