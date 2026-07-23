@@ -30,6 +30,27 @@ https://excalidraw.com/?addLibrary=https://raw.githubusercontent.com/andreasbros
 ```
 (If GitHub raw is also blocked, use the drag-and-drop method above.)
 
+## Finding a specific component
+
+The library panel is just tiny thumbnails with no search, and **many icons (all the GCP
+ones) have no name**, so hovering won't help. Two ways to find what you need:
+
+**1. Visual catalogues (best — works for unnamed icons).**
+Every library has a companion scene in [`catalogues/`](catalogues) that lays out *all* its
+components in a labelled grid (`#index  name`). Open the matching
+`catalogues/<category>/<name>.excalidraw` in Excalidraw (drag-drop or Open), zoom in to
+read them at full size, then **copy the icon you want (Ctrl+C) and paste it straight into
+your diagram** — you don't even need the library panel. It doubles as a visual palette.
+
+**2. Text index (for the ~60% that are named).**
+[`INDEX.md`](INDEX.md) lists every *named* component grouped by library — **Ctrl+F** for
+e.g. "Cloud Run", see which file it's in, import that file.
+
+**UI tips inside Excalidraw:**
+- Hover an item to see its name (if it has one).
+- Zoom the whole browser (**Ctrl +**) to enlarge the tiny library thumbnails.
+- Import **one** library at a time while hunting to cut clutter; remove it after.
+
 ## Libraries included
 
 ### `gcp/` - Google Cloud Platform
