@@ -77,7 +77,7 @@ kbd{background:var(--card);border:1px solid var(--border);border-radius:5px;padd
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .t-big{font-size:30px;font-weight:700;line-height:1;letter-spacing:.2px}
 .t-sub{font-size:10.5px;line-height:1.2;color:rgba(255,255,255,.82);
-  display:flex;align-items:center;gap:5px;flex-wrap:wrap;justify-content:center}
+  display:flex;align-items:center;gap:5px;flex-wrap:nowrap;white-space:nowrap;justify-content:center}
 .toast kbd{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);
   border-bottom-width:2px;border-radius:5px;padding:1px 6px;color:#fff;
   font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;line-height:1.4}
