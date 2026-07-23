@@ -161,10 +161,12 @@ const io = new IntersectionObserver(
 function makeCard(icon) {
   const card = document.createElement("div");
   card.className = "card";
-  card.title = icon.name || `${icon.lib} #${icon.idx}`;
+  const label = icon.name || icon.lib.replace(/[-_]/g, " ");
+  const libName = icon.libName || icon.lib;
+  card.title = icon.name ? `${icon.name}  ·  ${libName}` : libName;
   card.innerHTML =
     `<div class="thumb"><img loading="lazy" src="thumbs/${icon.id}.svg" alt=""></div>` +
-    `<div class="name">${escapeHtml(icon.name || "-")}<span class="lib">${escapeHtml(icon.lib)}</span></div>`;
+    `<div class="name${icon.name ? "" : " unnamed"}">${escapeHtml(label)}</div>`;
   card.onclick = () => copyIcon(icon, card);
   return card;
 }
