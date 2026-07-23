@@ -65,7 +65,7 @@ function render() {
     card.title = icon.name || `${icon.lib} #${icon.idx}`;
     card.innerHTML =
       `<div class="thumb"><img loading="lazy" src="thumbs/${icon.id}.svg" alt=""></div>` +
-      `<div class="name">${escapeHtml(icon.name || "—")}<span class="lib">${escapeHtml(icon.lib)}</span></div>`;
+      `<div class="name">${escapeHtml(icon.name || "-")}<span class="lib">${escapeHtml(icon.lib)}</span></div>`;
     card.onclick = () => copyIcon(icon, card);
     frag.appendChild(card);
   }
@@ -87,7 +87,7 @@ async function copyIcon(icon, card) {
     setTimeout(() => card.classList.remove("copied"), 700);
     toast("Copied ✓  Paste into Excalidraw (Ctrl/Cmd+V)");
   } catch (e) {
-    toast("Copy failed — your browser blocked clipboard access");
+    toast("Copy failed - your browser blocked clipboard access");
   }
 }
 

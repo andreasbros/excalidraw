@@ -5,7 +5,7 @@ A self-hosted copy of [Excalidraw](https://excalidraw.com) component libraries f
 
 ## 🔎 Searchable icon gallery → https://andreasbros.github.io/excalidraw/
 
-Search all 628 icons, filter by category, and **click any icon to copy it — then paste
+Search all 1075 icons, filter by category, and **click any icon to copy it - then paste
 straight into Excalidraw with `Ctrl+V`.** No proxy/library-browser needed.
 If `github.io` is blocked on your network: `git clone` this repo, then
 `cd docs && python3 -m http.server` and open <http://localhost:8000>.
@@ -13,7 +13,7 @@ If `github.io` is blocked on your network: `git clone` this repo, then
 Mirror in case corporate proxy blocks `libraries.excalidraw.com`. All files
 are the original `.excalidrawlib` JSON from
 [`excalidraw/excalidraw-libraries`](https://github.com/excalidraw/excalidraw-libraries)
-(MIT-licensed; each library keeps its original author — see attribution below).
+(MIT-licensed; each library keeps its original author - see attribution below).
 
 ## How to use (offline / no proxy needed)
 
@@ -42,15 +42,15 @@ https://excalidraw.com/?addLibrary=https://raw.githubusercontent.com/andreasbros
 The library panel is just tiny thumbnails with no search, and **many icons (all the GCP
 ones) have no name**, so hovering won't help. Two ways to find what you need:
 
-**1. Visual catalogues (best — works for unnamed icons).**
+**1. Visual catalogues (best - works for unnamed icons).**
 Every library has a companion scene in [`catalogues/`](catalogues) that lays out *all* its
 components in a labelled grid (`#index  name`). Open the matching
 `catalogues/<category>/<name>.excalidraw` in Excalidraw (drag-drop or Open), zoom in to
 read them at full size, then **copy the icon you want (Ctrl+C) and paste it straight into
-your diagram** — you don't even need the library panel. It doubles as a visual palette.
+your diagram** - you don't even need the library panel. It doubles as a visual palette.
 
 **2. Text index (for the ~60% that are named).**
-[`INDEX.md`](INDEX.md) lists every *named* component grouped by library — **Ctrl+F** for
+[`INDEX.md`](INDEX.md) lists every *named* component grouped by library - **Ctrl+F** for
 e.g. "Cloud Run", see which file it's in, import that file.
 
 **UI tips inside Excalidraw:**
@@ -66,6 +66,29 @@ e.g. "Cloud Run", see which file it's in, import that file.
 | `gcp-icons.excalidrawlib` | 83 | GCP product/service icons |
 | `original-google-architecture-icons.excalidrawlib` | 139 | Official Google Cloud architecture icon set |
 | `google-icons.excalidrawlib` | 139 | Broader Google product icons |
+
+### `aws/` - Amazon Web Services
+| File | Items | What |
+|---|---|---|
+| `aws-architecture-icons.excalidrawlib` | 249 | Full AWS architecture icon set |
+| `aws-serverless-icons-v2.excalidrawlib` | 24 | AWS serverless icons |
+| `aws-simple-icons.excalidrawlib` | 17 | Simplified AWS service icons |
+
+### `azure/` - Microsoft Azure
+| File | Items | What |
+|---|---|---|
+| `microsoft-azure-cloud-icons.excalidrawlib` | 19 | Core Azure cloud icons |
+| `azure-cloud-services.excalidrawlib` | 19 | Azure cloud services |
+| `azure-network.excalidrawlib` | 29 | Azure networking |
+| `azure-compute.excalidrawlib` | 17 | Azure compute |
+| `azure-storage.excalidrawlib` | 13 | Azure storage |
+| `azure-general.excalidrawlib` | 19 | Azure general |
+| `azure-containers.excalidrawlib` | 6 | Azure containers |
+
+### `oracle/` - Oracle Cloud Infrastructure
+| File | Items | What |
+|---|---|---|
+| `oracle-cloud-infrastructure-icons.excalidrawlib` | 35 | OCI service icons |
 
 ### `architecture/` - software & system design
 | File | Items | What |

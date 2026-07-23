@@ -1,0 +1,15 @@
+{
+  "name": "Excalidraw Icon Search",
+  "short_name": "Excalidraw Icons",
+  "description": "Search GCP, AWS, Azure, Oracle, architecture and network icons and copy them straight into Excalidraw.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#6741d9",
+  "icons": [
+    { "src": "icons/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
