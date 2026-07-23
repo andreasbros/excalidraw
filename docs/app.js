@@ -81,6 +81,7 @@ async function init() {
   addEventListener("visibilitychange", () => {
     if (document.visibilityState === "hidden") saveState();
   });
+  initModal();
   // Mobile: toggle the collapsible filters panel
   const ft = document.getElementById("filterToggle");
   const filters = document.getElementById("filters");
@@ -189,7 +190,7 @@ const io = new IntersectionObserver(
   { rootMargin: "800px 0px" } // preload before hitting the bottom; viewport-based, so resolution-independent
 );
 
-function makeCard(icon) {
+function makeCard(icon, index) {
   const card = document.createElement("div");
   card.className = "card";
   const libName = icon.libName || icon.lib.replace(/[-_]/g, " ");
@@ -201,7 +202,7 @@ function makeCard(icon) {
   card.innerHTML =
     `<div class="thumb"><img loading="lazy" src="thumbs/${icon.id}.svg" alt=""></div>` +
     `<div class="meta">${meta}</div>`;
-  card.onclick = () => copyIcon(icon, card);
+  card.onclick = () => openModal(index);
   return card;
 }
 
@@ -209,7 +210,7 @@ function appendChunk() {
   if (sentinel) { io.unobserve(sentinel); sentinel.remove(); sentinel = null; }
   const end = Math.min(renderCursor + CHUNK, renderList.length);
   const frag = document.createDocumentFragment();
-  for (let i = renderCursor; i < end; i++) frag.appendChild(makeCard(renderList[i]));
+  for (let i = renderCursor; i < end; i++) frag.appendChild(makeCard(renderList[i], i));
   grid.appendChild(frag);
   renderCursor = end;
   if (renderCursor < renderList.length) {
@@ -299,4 +300,171 @@ function toast(msg) {
 
 function escapeHtml(s) {
   return s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+}
+
+// ============ Icon lightbox (preview + copy/share/download + carousel) ============
+const modalEl = document.getElementById("modal");
+const modalImg = document.getElementById("modalImg");
+let modalList = [];
+let modalIndex = 0;
+let carListRef = null;
+
+const thumbUrl = (icon) => `thumbs/${icon.id}.svg`;
+
+function showModal(list, index) {
+  modalList = list;
+  buildCarousel();
+  setModalIcon(index, false);
+  modalEl.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
+function openModal(index) {
+  showModal(renderList, index);
+  history.pushState({ modal: 1 }, "", "#" + encodeURIComponent(renderList[index].id));
+}
+function openBySid(id, push) {
+  let idx = renderList.findIndex((i) => i.id === id), list = renderList;
+  if (idx < 0) { idx = ICONS.findIndex((i) => i.id === id); list = ICONS; }
+  if (idx < 0) return false;
+  showModal(list, idx);
+  history[push ? "pushState" : "replaceState"]({ modal: 1 }, "", "#" + encodeURIComponent(id));
+  return true;
+}
+function buildCarousel() {
+  if (carListRef === modalList) return;      // same list -> reuse existing strip
+  carListRef = modalList;
+  const track = document.getElementById("carTrack");
+  track.innerHTML = "";
+  const frag = document.createDocumentFragment();
+  modalList.forEach((icon, i) => {
+    const d = document.createElement("div");
+    d.className = "car-item";
+    d.innerHTML = `<img loading="lazy" src="${thumbUrl(icon)}" alt="">`;
+    d.onclick = () => setModalIcon(i);
+    frag.appendChild(d);
+  });
+  track.appendChild(frag);
+}
+function setModalIcon(index, updateHash = true) {
+  index = Math.max(0, Math.min(modalList.length - 1, index));
+  modalIndex = index;
+  const icon = modalList[index];
+  modalImg.src = thumbUrl(icon);
+  document.getElementById("modalName").textContent = icon.name || icon.libName || icon.lib.replace(/[-_]/g, " ");
+  document.getElementById("modalLib").textContent = icon.libName || icon.lib.replace(/[-_]/g, " ");
+  const libCount = ICONS.filter((i) => i.src === icon.src).length;
+  document.getElementById("dlLib").textContent = `Entire library (${libCount})`;
+  const items = document.querySelectorAll("#carTrack .car-item");
+  items.forEach((el, i) => el.classList.toggle("active", i === index));
+  if (items[index]) items[index].scrollIntoView({ inline: "center", block: "nearest", behavior: "auto" });
+  closeDlMenu();
+  if (updateHash) history.replaceState({ modal: 1 }, "", "#" + encodeURIComponent(icon.id));
+}
+function closeModal() {
+  if (modalEl.classList.contains("hidden")) return;
+  modalEl.classList.add("hidden");
+  document.body.style.overflow = "";
+  closeDlMenu();
+}
+function requestClose() {
+  if (history.state && history.state.modal) history.back();
+  else { closeModal(); if (location.hash) history.replaceState(null, "", location.pathname + location.search); }
+}
+function closeDlMenu() {
+  const m = document.getElementById("dlMenu");
+  if (m && !m.classList.contains("hidden")) {
+    m.classList.add("hidden");
+    document.getElementById("modalDownload").setAttribute("aria-expanded", "false");
+  }
+}
+
+async function modalItem() {
+  const icon = modalList[modalIndex];
+  const lib = await loadLib(icon.src);
+  return { icon, item: lib[icon.idx], lib };
+}
+async function modalCopy() {
+  try {
+    const { item } = await modalItem();
+    await navigator.clipboard.writeText(JSON.stringify({
+      type: "excalidraw/clipboard", elements: item.elements, files: item.files || {},
+    }));
+    showCopied();
+  } catch (e) { toast("Copy failed"); }
+}
+async function modalShare() {
+  const icon = modalList[modalIndex];
+  const url = location.origin + location.pathname + "#" + encodeURIComponent(icon.id);
+  if (navigator.share) {
+    try { await navigator.share({ title: icon.name || icon.lib, url }); return; }
+    catch (e) { if (e && e.name === "AbortError") return; }
+  }
+  try { await navigator.clipboard.writeText(url); toast("Link copied ✓"); }
+  catch (e) { toast("Couldn't copy link"); }
+}
+function downloadBlob(obj, filename) {
+  const blob = new Blob([JSON.stringify(obj)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+function toLibraryFile(items) {
+  const files = {};
+  for (const it of items) if (it.files) Object.assign(files, it.files);
+  return {
+    type: "excalidrawlib", version: 2, source: "https://andreasbros.github.io/excalidraw",
+    libraryItems: items.map((it, i) => ({
+      id: String(i), status: "unpublished", created: 1700000000000,
+      name: it.name || "", elements: it.elements,
+    })),
+    files,
+  };
+}
+async function downloadIcon() {
+  const { icon, item } = await modalItem();
+  downloadBlob(toLibraryFile([item]), `${(icon.name || icon.lib).replace(/[^\w.-]+/g, "-")}.excalidrawlib`);
+  closeDlMenu();
+}
+async function downloadLibrary() {
+  const icon = modalList[modalIndex];
+  const items = await loadLib(icon.src);
+  downloadBlob(toLibraryFile(items), `${icon.lib}.excalidrawlib`);
+  closeDlMenu();
+}
+
+function initModal() {
+  modalEl.querySelectorAll("[data-close]").forEach((el) => el.addEventListener("click", requestClose));
+  document.getElementById("carPrev").addEventListener("click", () => setModalIcon(modalIndex - 1));
+  document.getElementById("carNext").addEventListener("click", () => setModalIcon(modalIndex + 1));
+  document.getElementById("modalCopy").addEventListener("click", modalCopy);
+  document.getElementById("modalShare").addEventListener("click", modalShare);
+  const dlBtn = document.getElementById("modalDownload");
+  const dlMenu = document.getElementById("dlMenu");
+  dlBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    dlMenu.classList.toggle("hidden");
+    dlBtn.setAttribute("aria-expanded", String(!dlMenu.classList.contains("hidden")));
+  });
+  document.getElementById("dlIcon").addEventListener("click", downloadIcon);
+  document.getElementById("dlLib").addEventListener("click", downloadLibrary);
+  document.addEventListener("click", (e) => { if (!e.target.closest(".dl-wrap")) closeDlMenu(); });
+  document.addEventListener("keydown", (e) => {
+    if (modalEl.classList.contains("hidden")) return;
+    if (e.key === "Escape") requestClose();
+    else if (e.key === "ArrowRight") setModalIcon(modalIndex + 1);
+    else if (e.key === "ArrowLeft") setModalIcon(modalIndex - 1);
+  });
+  addEventListener("popstate", () => {
+    const id = location.hash ? decodeURIComponent(location.hash.slice(1)) : "";
+    if (!id) { closeModal(); return; }
+    if (modalEl.classList.contains("hidden")) openBySid(id, false);
+    else { const i = modalList.findIndex((x) => x.id === id); if (i >= 0) setModalIcon(i, false); }
+  });
+  // deep link on load: #<id> opens that icon
+  if (location.hash) {
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (id) openBySid(id, false);
+  }
 }

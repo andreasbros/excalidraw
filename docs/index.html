@@ -33,6 +33,49 @@
   Brand logos are trademarks of their respective owners, shown for identification only - no affiliation or endorsement.
   Sources &amp; licenses: <a href="https://github.com/andreasbros/excalidraw/blob/main/NOTICE.md" target="_blank" rel="noopener">NOTICE</a>.
 </footer>
+<div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Icon preview">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel">
+    <button class="modal-close" data-close aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="modal-preview"><img id="modalImg" alt=""></div>
+    <div class="modal-meta">
+      <div id="modalName" class="modal-name"></div>
+      <div id="modalLib" class="modal-lib"></div>
+    </div>
+    <div class="modal-actions">
+      <button id="modalCopy" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy
+      </button>
+      <button id="modalShare" class="btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>
+        Share
+      </button>
+      <div class="dl-wrap">
+        <button id="modalDownload" class="btn" aria-haspopup="true" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="dlMenu" class="dl-menu hidden">
+          <button id="dlIcon" class="dl-opt">This icon</button>
+          <button id="dlLib" class="dl-opt">Entire library</button>
+        </div>
+      </div>
+    </div>
+    <div class="carousel">
+      <button id="carPrev" class="car-nav" aria-label="Previous icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div id="carTrack" class="car-track"></div>
+      <button id="carNext" class="car-nav" aria-label="Next icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
 <div id="toast" class="toast"></div>
 <script src="vendor/fuse.min.js"></script>
 <script src="app.js"></script>
