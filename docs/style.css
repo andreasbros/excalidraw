@@ -136,11 +136,14 @@ kbd{background:var(--card);border:1px solid var(--border);border-radius:5px;padd
 .mm-h{font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:4px}
 .modal-name{font-size:13.5px;font-weight:600;color:var(--fg);line-height:1.32;word-break:break-word}
 .modal-lib{font-size:12px;color:var(--muted);line-height:1.32;word-break:break-word}
-/* clamp each column value to 2 lines; the ⌄ button expands to full content */
-.mm-clamp{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
-.mm-clamp.open{-webkit-line-clamp:unset;overflow:visible}
-.mm-more{display:none;align-self:flex-start;margin-top:3px;padding:0;border:none;background:transparent;
-  color:var(--accent);cursor:pointer;line-height:0}
+/* every column value keeps a fixed 2-line height so the popup never resizes
+   (1 line vs 2). The ⌄ button expands to the full content. */
+.mm-clamp{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;
+  height:2.7em;height:2lh}
+.mm-clamp.open{-webkit-line-clamp:unset;overflow:visible;height:auto}
+/* chevron slot is always reserved (visibility toggled, not display) to keep height stable */
+.mm-more{visibility:hidden;align-self:flex-start;margin-top:3px;height:16px;padding:0;border:none;
+  background:transparent;color:var(--accent);cursor:pointer;line-height:0}
 .mm-more svg{width:15px;height:15px;transition:transform .18s}
 .mm-more.open svg{transform:rotate(180deg)}
 .modal-actions{display:flex;gap:10px;justify-content:center;flex-wrap:nowrap}

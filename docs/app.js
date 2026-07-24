@@ -363,8 +363,8 @@ function updateClamps() {
     btn.classList.remove("open");
     btn.setAttribute("aria-expanded", "false");
     const col = el.closest(".mm-col");
-    if (col && col.style.display === "none") { btn.style.display = "none"; return; }
-    btn.style.display = el.scrollHeight - el.clientHeight > 1 ? "" : "none";
+    if (col && col.style.display === "none") { btn.style.visibility = "hidden"; return; }
+    btn.style.visibility = el.scrollHeight - el.clientHeight > 1 ? "visible" : "hidden";
   });
 }
 function setModalIcon(index, updateHash = true) {
