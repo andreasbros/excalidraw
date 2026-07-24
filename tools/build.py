@@ -113,10 +113,19 @@ def visual_keywords(els):
 
 STOP = set("a an the is are be was were it its of to in on and or for with this that as at by what does do how you your can will".split())
 
+def load_vision():
+    """id -> {kw:[...], summary} produced by the vision pipeline (optional)."""
+    p = os.path.join(HERE, "vision.json")
+    try:
+        return json.load(open(p))
+    except Exception:
+        return {}
+
 def build():
     os.makedirs(os.path.join(DOCS, "thumbs"), exist_ok=True)
     os.makedirs(os.path.join(DOCS, "data"), exist_ok=True)
     authors = author_map()
+    vision = load_vision()
     icons = []
     for f in sorted(glob.glob(os.path.join(ROOT, "*", "*.excalidrawlib"))):
         cat = os.path.basename(os.path.dirname(f))
@@ -149,6 +158,20 @@ def build():
             tags = tags[:18]
             base = name or (texts[0] if texts else "") or libname or "Icon"
             summary = base if (not libname or libname.lower() in base.lower()) else f"{base} - {libname}"
+            # Fold in vision analysis (what the icon actually depicts): the vision
+            # summary replaces the metadata one; vision keywords lead the tags/search.
+            v = vision.get(iid)
+            if v:
+                vk = v.get("kw", [])
+                if v.get("summary"):
+                    summary = v["summary"]
+                merged = []
+                for w in vk + tags:
+                    w = str(w).strip().lower()
+                    if w and w not in STOP and w not in merged:
+                        merged.append(w)
+                tags = merged[:20]
+                kw = re.sub(r"\s+", " ", (kw + " " + " ".join(vk))).strip()
             # Thumbnails are rendered separately by tools/render-thumbs.mjs using
             # Excalidraw's own exportToSvg (100% faithful). build.py only emits
             # data + icons.json so it never clobbers those faithful thumbnails.
