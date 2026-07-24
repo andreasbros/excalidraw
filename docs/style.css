@@ -164,8 +164,11 @@ kbd{background:var(--card);border:1px solid var(--border);border-radius:5px;padd
 .car-item.active{border-color:var(--accent)}
 .car-item img{max-width:100%;max-height:100%}
 .modal-summary{font-size:13px;color:var(--fg);margin-top:8px;line-height:1.45;opacity:.85}
-.modal-tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-height:78px;overflow:auto}
-.modal-tags .tag{font-size:11px;color:var(--muted);background:var(--card);border:1px solid var(--border);
+.modal-tags{display:flex;flex-wrap:nowrap;gap:6px;overflow-x:auto;overflow-y:hidden;
+  padding-bottom:2px;scrollbar-width:none;-ms-overflow-style:none;
+  -webkit-overflow-scrolling:touch;justify-content:flex-start}
+.modal-tags::-webkit-scrollbar{display:none}
+.modal-tags .tag{flex:0 0 auto;font-size:11px;color:var(--muted);background:var(--card);border:1px solid var(--border);
   border-radius:999px;padding:3px 9px;white-space:nowrap}
 @media (max-width:640px){
   .modal{padding:14px} /* vertically centered (inherits align-items:center) */
