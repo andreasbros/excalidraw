@@ -308,6 +308,7 @@ const modalImg = document.getElementById("modalImg");
 let modalList = [];
 let modalIndex = 0;
 let carListRef = null;
+let modalPushed = false; // did opening the modal push a history entry we can pop?
 
 const thumbUrl = (icon) => `thumbs/${icon.id}.svg`;
 
@@ -320,6 +321,7 @@ function showModal(list, index) {
 }
 function openModal(index) {
   showModal(renderList, index);
+  modalPushed = true;
   history.pushState({ modal: 1 }, "", "#" + encodeURIComponent(renderList[index].id));
 }
 function openBySid(id, push) {
@@ -327,6 +329,7 @@ function openBySid(id, push) {
   if (idx < 0) { idx = ICONS.findIndex((i) => i.id === id); list = ICONS; }
   if (idx < 0) return false;
   showModal(list, idx);
+  modalPushed = !!push;
   history[push ? "pushState" : "replaceState"]({ modal: 1 }, "", "#" + encodeURIComponent(id));
   return true;
 }
@@ -367,8 +370,10 @@ function closeModal() {
   closeDlMenu();
 }
 function requestClose() {
-  if (history.state && history.state.modal) history.back();
-  else { closeModal(); if (location.hash) history.replaceState(null, "", location.pathname + location.search); }
+  // Always close directly (never rely on history.back() firing) so the x is reliable.
+  closeModal();
+  if (modalPushed) { modalPushed = false; history.back(); }
+  else if (location.hash) history.replaceState(null, "", location.pathname + location.search);
 }
 function closeDlMenu() {
   const m = document.getElementById("dlMenu");
@@ -458,7 +463,7 @@ function initModal() {
   });
   addEventListener("popstate", () => {
     const id = location.hash ? decodeURIComponent(location.hash.slice(1)) : "";
-    if (!id) { closeModal(); return; }
+    if (!id) { modalPushed = false; closeModal(); return; }
     if (modalEl.classList.contains("hidden")) openBySid(id, false);
     else { const i = modalList.findIndex((x) => x.id === id); if (i >= 0) setModalIcon(i, false); }
   });
