@@ -6,7 +6,7 @@ category folders. Run after adding or changing any library.
 
 Outputs: docs/thumbs/*.svg, docs/data/*.json, docs/icons.json, INDEX.md
 """
-import json, glob, os, sys, urllib.request
+import json, glob, os, sys, re, urllib.request
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
@@ -58,6 +58,61 @@ def item_thumb(els, libfiles):
                     f'width="{w}" height="{h}"/></svg>')
     return render(els)
 
+
+def _color_name(c):
+    if not c or not isinstance(c, str): return None
+    c = c.strip().lower()
+    if c in ("transparent", "none") or c.startswith("url("): return None
+    if c.startswith("#"): c = c[1:]
+    if len(c) == 3: c = "".join(ch * 2 for ch in c)
+    if len(c) == 8: c = c[:6]
+    if len(c) != 6: return None
+    try:
+        r, g, b = int(c[0:2], 16), int(c[2:4], 16), int(c[4:6], 16)
+    except ValueError:
+        return None
+    mx, mn = max(r, g, b), min(r, g, b); d = mx - mn; l = (mx + mn) / 510
+    if l > 0.93: return "white"
+    if l < 0.10: return "black"
+    if d < 26: return "gray grey"
+    if mx == r: h = ((g - b) / d) % 6
+    elif mx == g: h = (b - r) / d + 2
+    else: h = (r - g) / d + 4
+    h *= 60
+    if h < 0: h += 360
+    if h < 15 or h >= 345: return "red"
+    if h < 45: return "orange"
+    if h < 66: return "yellow"
+    if h < 170: return "green"
+    if h < 200: return "teal cyan"
+    if h < 255: return "blue"
+    if h < 290: return "purple violet"
+    return "pink magenta"
+
+_SHAPE = {"rectangle": ["rectangle", "square", "box"], "ellipse": ["circle", "ellipse", "round"],
+          "diamond": ["diamond", "rhombus"], "line": ["line"], "arrow": ["arrow"],
+          "freedraw": ["sketch"], "draw": ["sketch"]}
+
+def visual_keywords(els):
+    """Shape / stroke-style / colour / fill descriptors from the elements themselves."""
+    kw = set()
+    for e in els:
+        if not isinstance(e, dict): continue
+        t = e.get("type")
+        if t in ("text", "image"): continue
+        kw.update(_SHAPE.get(t, []))
+        if e.get("strokeStyle") in ("dashed", "dotted"):
+            kw.add(e["strokeStyle"])
+        for col in (e.get("strokeColor"), e.get("backgroundColor")):
+            nm = _color_name(col)
+            if nm: kw.update(nm.split())
+        bg = e.get("backgroundColor")
+        if bg and bg != "transparent" and _color_name(bg) and e.get("fillStyle") == "solid":
+            kw.add("filled")
+    return kw
+
+STOP = set("a an the is are be was were it its of to in on and or for with this that as at by what does do how you your can will".split())
+
 def build():
     os.makedirs(os.path.join(DOCS, "thumbs"), exist_ok=True)
     os.makedirs(os.path.join(DOCS, "data"), exist_ok=True)
@@ -80,6 +135,20 @@ def build():
             els = it.get("elements", it) if isinstance(it, dict) else it
             name = (it.get("name") or "").strip() if isinstance(it, dict) else ""
             iid = f"{src}__{i}"
+            # keywords from any text the icon draws inside itself (labels)
+            texts = [ (e.get("text") or "").strip() for e in els
+                      if isinstance(e, dict) and e.get("type") == "text" ]
+            texts = [t for t in texts if t]
+            vkw = visual_keywords(els)
+            kw = re.sub(r"\s+", " ", " ".join(texts + sorted(vkw))).strip()
+            tags = []
+            for w in re.findall(r"[a-z0-9]+",
+                                f"{name} {' '.join(texts)} {' '.join(sorted(vkw))}".lower()):
+                if len(w) >= 2 and w not in STOP and w not in tags:
+                    tags.append(w)
+            tags = tags[:18]
+            base = name or (texts[0] if texts else "") or libname or "Icon"
+            summary = base if (not libname or libname.lower() in base.lower()) else f"{base} - {libname}"
             # Thumbnails are rendered separately by tools/render-thumbs.mjs using
             # Excalidraw's own exportToSvg (100% faithful). build.py only emits
             # data + icons.json so it never clobbers those faithful thumbnails.
@@ -91,7 +160,7 @@ def build():
             payload.append(entry)
             icons.append({"id": iid, "name": name, "lib": lib, "libName": libname,
                           "author": author, "cat": cat, "catLabel": catlabel(cat),
-                          "src": src, "idx": i})
+                          "kw": kw, "tags": tags, "summary": summary, "src": src, "idx": i})
         json.dump(payload, open(os.path.join(DOCS, "data", src + ".json"), "w"))
     json.dump(icons, open(os.path.join(DOCS, "icons.json"), "w"))
 

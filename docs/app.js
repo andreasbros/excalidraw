@@ -31,9 +31,11 @@ async function init() {
   ICONS = await (await fetch("icons.json")).json();
   for (const i of ICONS) {
     // searchable text: name (weighted x2), author, library name, filename,
-    // category (slug + label) and provider synonyms
+    // category, provider synonyms, and keywords (embedded text labels + shape,
+    // colour, dashed/dotted, filled descriptors extracted from the icon itself)
     i.search = [i.name, i.name, i.author || "", i.libName || "",
-                i.lib.replace(/[-_]/g, " "), i.cat, i.catLabel, SYN[i.cat] || ""]
+                i.lib.replace(/[-_]/g, " "), i.cat, i.catLabel, SYN[i.cat] || "",
+                i.kw || "", i.summary || ""]
       .join(" ").toLowerCase();
   }
   fuse = new Fuse(ICONS, {
@@ -174,9 +176,14 @@ function searchRanked(raw) {
     s += nameHits * 120 + (anyHits - nameHits) * 15;
     if (nameHits === tokens.length) s += 200;      // all words in the name
     else if (anyHits === tokens.length) s += 80;   // all words matched somewhere (AND)
-    scored.push({ i, s });
+    scored.push({ i, s, ah: anyHits });
   }
   scored.sort((a, b) => b.s - a.s);
+  // multi-word query: if anything matches every word, drop the partial matches
+  // (keeps e.g. "blue circle" precise instead of returning everything blue-ish)
+  if (tokens.length > 1 && scored.some((x) => x.ah === tokens.length)) {
+    return scored.filter((x) => x.ah === tokens.length).map((x) => x.i);
+  }
   return scored.map((x) => x.i);
 }
 
@@ -355,6 +362,15 @@ function setModalIcon(index, updateHash = true) {
   modalImg.src = thumbUrl(icon);
   document.getElementById("modalName").textContent = icon.name || icon.libName || icon.lib.replace(/[-_]/g, " ");
   document.getElementById("modalLib").textContent = icon.libName || icon.lib.replace(/[-_]/g, " ");
+  // summary (hide when it's just "Name - Library", i.e. before a real description exists)
+  const sum = icon.summary || "";
+  const nameLib = `${icon.name || ""} - ${icon.libName || ""}`.toLowerCase();
+  const redundant = !sum || sum.toLowerCase() === nameLib || sum.toLowerCase() === (icon.name || "").toLowerCase();
+  const sumEl = document.getElementById("modalSummary");
+  sumEl.textContent = redundant ? "" : sum;
+  sumEl.style.display = redundant ? "none" : "";
+  document.getElementById("modalTags").innerHTML =
+    (icon.tags || []).map((t) => `<span class="tag">${escapeHtml(t)}</span>`).join("");
   const libCount = ICONS.filter((i) => i.src === icon.src).length;
   document.getElementById("dlLib").textContent = `Entire library (${libCount})`;
   const items = document.querySelectorAll("#carTrack .car-item");
