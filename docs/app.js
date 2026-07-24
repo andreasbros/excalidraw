@@ -366,9 +366,9 @@ function setModalIcon(index, updateHash = true) {
   const sum = icon.summary || "";
   const nameLib = `${icon.name || ""} - ${icon.libName || ""}`.toLowerCase();
   const redundant = !sum || sum.toLowerCase() === nameLib || sum.toLowerCase() === (icon.name || "").toLowerCase();
-  const sumEl = document.getElementById("modalSummary");
-  sumEl.textContent = redundant ? "" : sum;
-  sumEl.style.display = redundant ? "none" : "";
+  document.getElementById("modalSummary").textContent = redundant ? "" : sum;
+  document.getElementById("modalSummaryCol").style.display = redundant ? "none" : "";
+  document.getElementById("modalMeta").style.gridTemplateColumns = redundant ? "1fr 1fr" : "repeat(3,1fr)";
   document.getElementById("modalTags").innerHTML =
     (icon.tags || []).map((t) => `<span class="tag">${escapeHtml(t)}</span>`).join("");
   const libCount = ICONS.filter((i) => i.src === icon.src).length;

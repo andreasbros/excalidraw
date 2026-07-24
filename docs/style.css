@@ -131,9 +131,11 @@ kbd{background:var(--card);border:1px solid var(--border);border-radius:5px;padd
 .modal-preview{background:var(--tile);border-radius:16px;padding:14px;display:flex;
   align-items:center;justify-content:center;height:min(58vh,460px)}
 .modal-preview img{max-width:100%;max-height:100%}
-.modal-meta{text-align:center;padding:0 30px}
-.modal-name{font-size:18px;font-weight:600;color:var(--fg);line-height:1.3;word-break:break-word}
-.modal-lib{font-size:13px;color:var(--muted);margin-top:3px}
+.modal-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:start;text-align:left;padding:0}
+.mm-col{min-width:0}
+.mm-h{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:4px}
+.modal-name{font-size:16px;font-weight:600;color:var(--fg);line-height:1.3;word-break:break-word}
+.modal-lib{font-size:13px;color:var(--muted);word-break:break-word}
 .modal-actions{display:flex;gap:10px;justify-content:center;flex-wrap:nowrap}
 .btn{display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 16px;border-radius:11px;
   border:1px solid var(--border);background:var(--card);color:var(--fg);font-size:14px;font-weight:500;
@@ -163,7 +165,7 @@ kbd{background:var(--card);border:1px solid var(--border);border-radius:5px;padd
   border-radius:10px;padding:6px;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .car-item.active{border-color:var(--accent)}
 .car-item img{max-width:100%;max-height:100%}
-.modal-summary{font-size:13px;color:var(--fg);margin-top:8px;line-height:1.45;opacity:.85}
+.modal-summary{font-size:13px;color:var(--fg);margin-top:0;line-height:1.45;opacity:.85}
 .modal-tags{display:flex;flex-wrap:nowrap;gap:6px;overflow-x:auto;overflow-y:hidden;
   padding-bottom:2px;scrollbar-width:none;-ms-overflow-style:none;
   -webkit-overflow-scrolling:touch;justify-content:flex-start}
@@ -174,6 +176,10 @@ kbd{background:var(--card);border:1px solid var(--border);border-radius:5px;padd
   .modal{padding:14px} /* vertically centered (inherits align-items:center) */
   .modal-panel{width:100%;max-height:calc(100dvh - 28px);padding:16px}
   .modal-preview{height:42vh}
+  .modal-meta{gap:9px}
+  .mm-h{font-size:9px}
+  .modal-name{font-size:14px}
+  .modal-lib,.modal-summary{font-size:12px}
   .modal-actions{gap:7px}
   .modal-actions .btn{padding:0 11px;font-size:13px;gap:5px;height:38px} /* keep Copy/Share/Download on one line */
   .btn svg{width:16px;height:16px}
