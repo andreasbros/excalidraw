@@ -41,9 +41,27 @@
     </button>
     <div class="modal-preview"><img id="modalImg" alt=""></div>
     <div id="modalMeta" class="modal-meta">
-      <div class="mm-col"><div class="mm-h">Name</div><div id="modalName" class="modal-name"></div></div>
-      <div class="mm-col"><div class="mm-h">Library</div><div id="modalLib" class="modal-lib"></div></div>
-      <div class="mm-col" id="modalSummaryCol"><div class="mm-h">Summary</div><div id="modalSummary" class="modal-summary"></div></div>
+      <div class="mm-col">
+        <div class="mm-h">Name</div>
+        <div id="modalName" class="modal-name mm-clamp"></div>
+        <button class="mm-more" type="button" data-more="modalName" aria-expanded="false" aria-label="Show more">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </div>
+      <div class="mm-col">
+        <div class="mm-h">Library</div>
+        <div id="modalLib" class="modal-lib mm-clamp"></div>
+        <button class="mm-more" type="button" data-more="modalLib" aria-expanded="false" aria-label="Show more">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </div>
+      <div class="mm-col" id="modalSummaryCol">
+        <div class="mm-h">Summary</div>
+        <div id="modalSummary" class="modal-summary mm-clamp"></div>
+        <button class="mm-more" type="button" data-more="modalSummary" aria-expanded="false" aria-label="Show more">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </div>
     </div>
     <div id="modalTags" class="modal-tags"></div>
     <div class="modal-actions">

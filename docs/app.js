@@ -355,6 +355,18 @@ function buildCarousel() {
   });
   track.appendChild(frag);
 }
+function updateClamps() {
+  // reset each column value to clamped, then reveal its ⌄ only if it overflows 2 lines
+  document.querySelectorAll("#modalMeta .mm-more").forEach((btn) => {
+    const el = document.getElementById(btn.dataset.more);
+    el.classList.remove("open");
+    btn.classList.remove("open");
+    btn.setAttribute("aria-expanded", "false");
+    const col = el.closest(".mm-col");
+    if (col && col.style.display === "none") { btn.style.display = "none"; return; }
+    btn.style.display = el.scrollHeight - el.clientHeight > 1 ? "" : "none";
+  });
+}
 function setModalIcon(index, updateHash = true) {
   index = Math.max(0, Math.min(modalList.length - 1, index));
   modalIndex = index;
@@ -369,6 +381,7 @@ function setModalIcon(index, updateHash = true) {
   document.getElementById("modalSummary").textContent = redundant ? "" : sum;
   document.getElementById("modalSummaryCol").style.display = redundant ? "none" : "";
   document.getElementById("modalMeta").style.gridTemplateColumns = redundant ? "1fr 1fr" : "repeat(3,1fr)";
+  requestAnimationFrame(updateClamps); // show ⌄ only where the 2-line clamp actually cuts content
   document.getElementById("modalTags").innerHTML =
     (icon.tags || []).map((t) => `<span class="tag">${escapeHtml(t)}</span>`).join("");
   const libCount = ICONS.filter((i) => i.src === icon.src).length;
@@ -457,6 +470,13 @@ async function downloadLibrary() {
 
 function initModal() {
   modalEl.querySelectorAll("[data-close]").forEach((el) => el.addEventListener("click", requestClose));
+  document.getElementById("modalMeta").addEventListener("click", (e) => {
+    const btn = e.target.closest(".mm-more"); if (!btn) return;
+    const el = document.getElementById(btn.dataset.more);
+    const open = el.classList.toggle("open");
+    btn.classList.toggle("open", open);
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
   document.getElementById("carPrev").addEventListener("click", () => setModalIcon(modalIndex - 1));
   document.getElementById("carNext").addEventListener("click", () => setModalIcon(modalIndex + 1));
   document.getElementById("modalCopy").addEventListener("click", modalCopy);
